@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Vollkorn+SC');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 * {
     margin: 0;
@@ -8,6 +10,21 @@
 }
 
 body {
-    padding: 2% 4%;
-    background-color: #f3f3f3;
+    max-width: 1200px;
+    margin: 16px auto;
+    background-color: #fcfcfc;
+}
+
+.main-logo {
+    font-size: 30px;
+    font-family: 'Vollkorn SC', serif;
+    color: white;
+    text-shadow: 0px 0px 3px blue;
+}
+
+.sub-logo {
+    font-size: 20px;
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    text-shadow: 0px 0px 2px black;
 }
