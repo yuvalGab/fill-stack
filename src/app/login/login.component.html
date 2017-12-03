@@ -1,28 +1,11 @@
 <section>
-  <h1>Fill Stack</h1>
-  <h2>control your progress</h2>
+  <div class="header">
+      <h1 class="main-logo">Fill Stack</h1>
+      <h2 class="sub-logo">control your progress</h2>
+  </div>
   <mat-tab-group>
     <mat-tab label="log in">
-      <mat-card class="card">
-        <mat-card-title>connect with an existing user</mat-card-title>
-        <mat-card-subtitle>enter a username and password to enter</mat-card-subtitle>
-        <mat-card-content>     
-          <div>
-            <mat-form-field>
-              <input matInput placeholder="username">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
-              <input matInput placeholder="password">
-            </mat-form-field>
-          </div>
-          <mat-slide-toggle>Slide me!</mat-slide-toggle>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button>log in</button>
-        </mat-card-actions>
-      </mat-card>
+      <app-login-card></app-login-card>
     </mat-tab>
     <mat-tab label="sign in">
       <mat-card class="card">

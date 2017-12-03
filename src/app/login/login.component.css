@@ -1,21 +1,20 @@
 
 section {
     padding: 10px;
-    background-color: rgb(194, 203, 230);
+    min-height: calc(100vh - 32px);
+    background-color: rgb(127, 153, 231);
+}
+
+.header {
+    margin-bottom: 12px;
 }
 
 h1 {
     display: inline-block;
-    font-size: 30px;
     margin-right: 30px;
 }
 
 h2 {
     display: inline-block;
-    font-size: 20px;
     vertical-align: 1.5px;
-}
-
-.card {
-    min-height: 500px;
 }
