@@ -10,13 +10,15 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginCardComponent } from './login/login-card/login-card.component';
+import { SigninCardComponent } from './login/signin-card/signin-card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LoginCardComponent
+    LoginCardComponent,
+    SigninCardComponent
   ],
   imports: [
     BrowserModule,
