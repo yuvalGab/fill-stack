@@ -9,12 +9,6 @@
     box-sizing: border-box;
 }
 
-body {
-    max-width: 1200px;
-    margin: 16px auto;
-    background-color: #fcfcfc;
-}
-
 .main-logo {
     font-size: 30px;
     font-family: 'Vollkorn SC', serif;

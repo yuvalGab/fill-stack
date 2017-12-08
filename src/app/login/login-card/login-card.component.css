@@ -1,4 +1,13 @@
 .card {
-    min-height: 500px;
+    height: calc(100vh - 124px);
+    overflow-y: auto; 
     text-align: center;
+}
+
+@media screen and (max-width: 420px) {
+    .card {
+        height: calc(100vh - 145px);
+        overflow-y: auto; 
+        text-align: center;
+    }
 }

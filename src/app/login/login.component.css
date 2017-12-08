@@ -1,9 +1,8 @@
 
 section {
     padding: 10px;
-    min-height: calc(100vh - 32px);
     background-color: rgb(127, 153, 231);
-}
+}       
 
 .header {
     margin-bottom: 12px;
