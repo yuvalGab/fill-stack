@@ -1,34 +1,36 @@
 <mat-card class="card">
   <mat-card-title>create a new user</mat-card-title>
   <mat-card-subtitle>fill out all fields below to create a new user</mat-card-subtitle>
-  <mat-card-content>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="full name">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="email">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="username">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="password">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="retype password">
-      </mat-form-field>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
+  <form (submit)="onSubmit($event, fullName.value, email.value, username.value, password.value, retypePassword.value)">
+    <mat-card-content>
+      <div>
+        <mat-form-field>
+          <input matInput #fullName placeholder="full name" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput #email placeholder="email" type="email" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput #username placeholder="username" minlength="4" maxlength="10" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput #password placeholder="password" minlength="6" maxlength="12" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput #retypePassword placeholder="retype password" minlength="6" maxlength="12" required>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
       <button mat-raised-button color="primary">sign in</button>
-  </mat-card-actions>
+    </mat-card-actions>
+  </form>
 </mat-card>

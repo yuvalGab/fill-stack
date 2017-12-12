@@ -12,4 +12,13 @@ export class SigninCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(e, fullName, email, username, password, retypePassword) {
+    e.preventDefault()
+    console.log('full name: ', fullName)
+    console.log('email: ', email)
+    console.log('username: ', username)
+    console.log('password: ', password)
+    console.log('retype password: ', retypePassword)
+  }
+
 }

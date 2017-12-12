@@ -1,20 +1,22 @@
 <mat-card class="card">
   <mat-card-title>connect with an existing user</mat-card-title>
   <mat-card-subtitle>enter a username and password to enter</mat-card-subtitle>
-  <mat-card-content>     
-    <div>
-      <mat-form-field class="123">
-        <input matInput placeholder="username">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="password">
-      </mat-form-field>
-    </div>
-    <mat-slide-toggle>remember me</mat-slide-toggle>
-  </mat-card-content>
-  <mat-card-actions>
-      <button mat-raised-button color="primary">log in</button>
-  </mat-card-actions>
-</mat-card>
+    <form (submit)="onSubmit($event, username.value, password.value, rememberMe.checked)">
+      <mat-card-content>     
+        <div>
+          <mat-form-field>
+            <input matInput #username placeholder="username" minlength="4" maxlength="10" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput #password placeholder="password" type="password" minlength="6" maxlength="12" required>
+          </mat-form-field>
+        </div>
+        <mat-slide-toggle #rememberMe>remember me</mat-slide-toggle>
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button color="primary">log in</button>
+      </mat-card-actions>
+  </form>
+</mat-card> 
