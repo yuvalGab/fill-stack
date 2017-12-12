@@ -5,12 +5,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginCardComponent } from './login/login-card/login-card.component';
 import { SigninCardComponent } from './login/signin-card/signin-card.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './common/header/header.component';
 
 
 @NgModule({
@@ -18,7 +21,9 @@ import { SigninCardComponent } from './login/signin-card/signin-card.component';
     AppComponent,
     LoginComponent,
     LoginCardComponent,
-    SigninCardComponent
+    SigninCardComponent,
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,8 @@ import { SigninCardComponent } from './login/signin-card/signin-card.component';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

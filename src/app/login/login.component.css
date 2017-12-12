@@ -3,17 +3,3 @@ section {
     padding: 10px;
     background-color: rgb(56, 101, 214);
 }       
-
-.header {
-    margin-bottom: 12px;
-}
-
-h1 {
-    display: inline-block;
-    margin-right: 30px;
-}
-
-h2 {
-    display: inline-block;
-    vertical-align: 1.5px;
-}
