@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Pangolin');
+
+.zone-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 80px 20px;
+    align-items: center;
+}
+
+.intro {
+    margin-top: 40px;
+    padding: 0px 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.zone {
+    text-align: center;
+    padding: 50px;
+    border: 2px solid rgb(98, 185, 204);
+    width: 30%;
+    height: 400px;
+    border-radius: 60px 180px;
+    font-size: 40px;
+    cursor: pointer;
+    font-family: 'Pangolin', cursive;
+    box-shadow: 0px 0px 10px rgb(135, 160, 196);
+    transition: all 700ms;
+}
+
+.zone.a {
+    background-color: rgb(179, 224, 235);
+}
+
+.zone.b {
+    background-color: rgb(136, 207, 221);
+}
+
+.zone.c {
+    background-color: rgb(170, 208, 214);
+}
+
+.zone.zone:hover {
+    box-shadow: 0px 0px 30px rgb(135, 160, 196);
+    background-color: rgb(77, 73, 189);
+    color: white;
+    text-shadow: 0px 0px 2px black;
+    border-color: rgb(67, 67, 111);
+}
+
+@media screen and (max-width: 1000px) {
+    .zone-container {
+        flex-direction: column;
+    }
+
+    .zone {
+        width: 80%;
+        margin-bottom: 40px;
+    }
+}

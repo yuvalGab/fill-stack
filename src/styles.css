@@ -2,6 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Vollkorn+SC');
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
 
 * {
     margin: 0;
@@ -9,12 +10,18 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Quattrocento Sans', sans-serif;
+}
+
 .page {
-    min-height: calc(100vh - 83px);
+    height: calc(100vh - 83px);
+    padding: 6px;
+    overflow-y: auto;
 }
 
 @media screen and (max-width: 460px) {
     .page {
-        min-height: calc(100vh - 103px);
+        height: calc(100vh - 103px);
     }
 }
