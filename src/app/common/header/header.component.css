@@ -32,3 +32,9 @@ h2 {
     right: 20px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 460px) {
+    h1, h2 {
+        display: block;
+    }
+}

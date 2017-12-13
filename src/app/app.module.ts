@@ -14,6 +14,7 @@ import { LoginCardComponent } from './login/login-card/login-card.component';
 import { SigninCardComponent } from './login/signin-card/signin-card.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HeaderComponent } from './common/header/header.component';
     LoginCardComponent,
     SigninCardComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

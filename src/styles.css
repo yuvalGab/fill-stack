@@ -8,3 +8,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.page {
+    min-height: calc(100vh - 83px);
+}
+
+@media screen and (max-width: 460px) {
+    .page {
+        min-height: calc(100vh - 103px);
+    }
+}
