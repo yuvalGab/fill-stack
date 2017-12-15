@@ -4,6 +4,10 @@
     text-align: center;
 }
 
+.error {
+    color: red;
+}   
+
 @media screen and (max-width: 420px) {
     .card {
         height: calc(100vh - 146px);

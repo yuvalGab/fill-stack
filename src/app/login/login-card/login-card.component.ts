@@ -6,17 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-card.component.css']
 })
 export class LoginCardComponent implements OnInit {
+  error:string = '';
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSubmit(e, username, password, rememberMe) {
-    e.preventDefault()
-    console.log('username: ', username)
-    console.log('password: ', password)
-    console.log('remember me: ', rememberMe)
+  onSubmit(data) {
+    const { valid, value } = data;
+    if (valid) {
+      this.error = '';
+      console.log(value);
+    } else {
+      this.error = 'please fill in valid fields';
+    }
   }
 
 }

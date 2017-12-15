@@ -6,19 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signin-card.component.css']
 })
 export class SigninCardComponent implements OnInit {
+  error:string = '';
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSubmit(e, fullName, email, username, password, retypePassword) {
-    e.preventDefault()
-    console.log('full name: ', fullName)
-    console.log('email: ', email)
-    console.log('username: ', username)
-    console.log('password: ', password)
-    console.log('retype password: ', retypePassword)
+  onSubmit(data) {
+    const { valid, value } = data;
+    if (valid) {
+
+      // TODO: chack if password === retype password
+      
+      this.error = '';
+      console.log(value);
+    } else {
+      this.error = 'please fill in valid fields';
+    }
   }
 
 }
