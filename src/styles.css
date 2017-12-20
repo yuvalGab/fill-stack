@@ -15,6 +15,7 @@ body {
 }
 
 .page {
+    position: relative;
     height: calc(100vh - 83px);
     padding: 6px;
     overflow-y: auto;

@@ -14,6 +14,9 @@ import { FooterComponent } from './common/footer/footer.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
+import { ListComponent } from './list/list.component';
+import { TopicComponent } from './topic/topic.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
     SignInComponent,
     SignUpComponent,
+    ListComponent,
+    TopicComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

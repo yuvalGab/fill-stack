@@ -4,12 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
+import { ListComponent } from './list/list.component';
+import { TopicComponent } from './topic/topic.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'sign-in', pathMatch: 'full'},
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent},
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'zone/:name', component: ListComponent },
+  { path: 'subject/:id', component: ListComponent },
+  { path: 'topic/:id', component: TopicComponent },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];
 
 @NgModule({
