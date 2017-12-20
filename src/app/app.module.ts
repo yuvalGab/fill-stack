@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
 import { TopicComponent } from './topic/topic.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MenuComponent } from './common/menu/menu.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ListComponent,
     TopicComponent,
     NotFoundComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

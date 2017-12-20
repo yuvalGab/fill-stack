@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-topic',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topic.component.css']
 })
 export class TopicComponent implements OnInit {
+  title:string = '';
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      const id = params.id;
+      this.title = `topic - ${id}`;
+    })
   }
 
 }

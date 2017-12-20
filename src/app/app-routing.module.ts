@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent},
   { path: 'home', component: HomeComponent },
-  { path: 'zone/:name', component: ListComponent },
-  { path: 'subject/:id', component: ListComponent },
+  { path: 'zone/:name', component: ListComponent, data: { type: 'zone'} },
+  { path: 'subject/:id', component: ListComponent, data: { type: 'subject'} },
   { path: 'topic/:id', component: TopicComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '404', pathMatch: 'full' }

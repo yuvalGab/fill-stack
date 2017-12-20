@@ -1,0 +1,23 @@
+nav {
+    display: flex;
+    border: 1px solid rgb(30, 19, 115);
+}
+
+a {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    border: 0.5px solid rgb(104, 83, 221);
+    font-size: 16px;
+    background-color: rgb(114, 170, 226);
+    color: black;
+    font-weight: bold;
+    transition: all 700ms;
+}
+
+a:hover {
+    color: white;
+    text-shadow: 0px 0px 2px black;
+    background-color: rgb(32, 32, 117);
+}
