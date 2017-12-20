@@ -1,0 +1,23 @@
+<div class="signin">
+  <h3>create a new user</h3>
+  <h4>fill out all fields below to create a new user</h4>
+  <form #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
+    <mat-form-field>
+      <input matInput ngModel name="fullName" placeholder="full name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput ngModel name="email" placeholder="email" type="email" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput ngModel name="username" placeholder="username" minlength="4" maxlength="10" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput ngModel name="password" placeholder="password" minlength="6" maxlength="12" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput ngModel name="retypePassword" placeholder="retype password" minlength="6" maxlength="12" required>
+    </mat-form-field>
+      <button mat-raised-button color="primary">sign in</button>
+    </form>
+  <p class="error">{{error}}</p>
+</div>
