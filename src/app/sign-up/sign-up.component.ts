@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignUpComponent implements OnInit {
   error:string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,7 @@ export class SignUpComponent implements OnInit {
         
       this.error = '';
       console.log(value);
+      this.router.navigate(['sign-in']);
     } else {
       this.error = 'please fill in valid fields';
     }
