@@ -1,4 +1,4 @@
-<div class="signin">
+<div class="sign-up">
   <h3>create a new user</h3>
   <h4>fill out all fields below to create a new user</h4>
   <form #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
@@ -20,4 +20,5 @@
       <button mat-raised-button color="primary">sign in</button>
     </form>
   <p class="error">{{error}}</p>
+  <a routerLink="/sign-in">sign-in</a>
 </div>
