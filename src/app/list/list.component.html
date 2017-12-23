@@ -1,6 +1,11 @@
 <app-menu></app-menu>
 <section>
   <h3>{{title}}</h3>
+  <div class="add-item-container">
+    <button mat-fab color="primary" class="add-item">
+      <mat-icon>playlist_add</mat-icon>
+    </button>
+  </div>
   <div *ngFor="let item of mockListData">
     <app-item [data]="item"></app-item>
   </div>

@@ -47,11 +47,12 @@ div.a {
 .title {
     font-size: 20px;
     cursor: pointer;
+    color: rgb(41, 40, 40);
     transition: all 700ms;
 }
 
 .title:hover{ 
-    font-weight: bold;
+    color: black;
 }
 
 div.b {
