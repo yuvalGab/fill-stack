@@ -16,3 +16,7 @@ h3 {
 .add-item:hover {
     background-color: rgb(9, 9, 71);
 }
+
+.no-items {
+    text-align: center;
+}

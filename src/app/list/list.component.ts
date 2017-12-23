@@ -1,38 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SubjectsService } from '../services/subjects.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  providers: [SubjectsService]
 })
 export class ListComponent implements OnInit {
   title:string = '';
-  mockListData:Object[] = [
-    {
-      id: 1,
-      title: 'JavaScript',
-      zone: 'client side',
-      importance: 3,
-      control: 2
-    },
-    {
-      id: 2,
-      title: 'Node.js',
-      zone: 'server side',
-      importance: 3,
-      control: 1
-    },
-    {
-      id: 3,
-      title: 'git',
-      zone: 'both sides',
-      importance: 2,
-      control: 2
-    }
-  ];
+  list:Object[];
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
+    private subjects:SubjectsService
+  ) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -63,6 +47,7 @@ export class ListComponent implements OnInit {
 
   subjectsListInit(zone:string) {
     this.title = `${zone} subjects list`;
+    this.list = this.subjects.getSubjects(zone);
   }
 
   topicsListInit(subjectId:string) {

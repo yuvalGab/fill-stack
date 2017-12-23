@@ -6,7 +6,8 @@
       <mat-icon>playlist_add</mat-icon>
     </button>
   </div>
-  <div *ngFor="let item of mockListData">
+  <p class="no-items" *ngIf="!list.length">there are no items to show...</p>
+  <div *ngFor="let item of list">
     <app-item [data]="item"></app-item>
   </div>
 </section>
