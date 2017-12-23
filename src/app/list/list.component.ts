@@ -8,6 +8,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   title:string = '';
+  mockListData:Object[] = [
+    {
+      id: 1,
+      title: 'JavaScript',
+      zone: 'client side',
+      importance: 3,
+      control: 2
+    },
+    {
+      id: 2,
+      title: 'Node.js',
+      zone: 'server side',
+      importance: 3,
+      control: 1
+    },
+    {
+      id: 3,
+      title: 'git',
+      zone: 'both sides',
+      importance: 2,
+      control: 2
+    }
+  ];
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 

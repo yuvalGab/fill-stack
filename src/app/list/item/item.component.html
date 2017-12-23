@@ -1,0 +1,23 @@
+<div class="item">
+  <div class="a">
+      <mat-icon class="delete">delete_forever</mat-icon>
+      <mat-icon class="edit">edit</mat-icon>
+      <span class="title">{{data.title}}</span>
+  </div>
+  <div class="b">
+    <mat-form-field>
+      <mat-select [value]="data.importance" placeholder="importance level">
+        <mat-option [value]="1">1</mat-option>
+        <mat-option [value]="2">2</mat-option>
+        <mat-option [value]="3">3</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [value]="data.control" placeholder="control level">
+          <mat-option [value]="1">1</mat-option>
+          <mat-option [value]="2">2</mat-option>
+          <mat-option [value]="3">3</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+</div>

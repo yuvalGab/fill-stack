@@ -1,0 +1,76 @@
+
+.item {
+    display: flex;
+    border: 1px solid rgb(107, 115, 171);
+    margin: 10px auto;
+    max-width: 1200px; 
+    border-radius: 10px;
+    background-color: rgb(232, 232, 241);
+    transition: all 700ms;
+}
+
+.item:hover {
+    background-color: rgb(200, 200, 226);
+}
+
+.item > div {
+    flex: 1;
+}
+div.a {
+    padding: 20px 12px;
+}
+
+.delete {
+    vertical-align: -5px;
+    margin-right: 6px;
+    color: rgb(214, 102, 102);
+    cursor: pointer;
+    transition: all 700ms;
+}
+
+.delete:hover {
+    color: red;
+}
+
+.edit {
+    vertical-align: -5px;
+    margin-right: 6px;
+    cursor: pointer;
+    transition: all 700ms;
+    color: rgb(67, 128, 154);
+}
+
+.edit:hover {
+    color: blue;
+}
+
+.title {
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 700ms;
+}
+
+.title:hover{ 
+    font-weight: bold;
+}
+
+div.b {
+    padding: 4px 12px;
+    text-align: center;
+}
+
+.mat-form-field:nth-child(1) {
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 840px) {
+    .item {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .mat-form-field:nth-child(1) {
+        margin-right: 0px;
+    }
+}

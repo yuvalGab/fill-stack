@@ -1,4 +1,7 @@
 <app-menu></app-menu>
 <section>
   <h3>{{title}}</h3>
+  <div *ngFor="let item of mockListData">
+    <app-item [data]="item"></app-item>
+  </div>
 </section>
