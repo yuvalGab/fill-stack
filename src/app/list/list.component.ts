@@ -10,7 +10,7 @@ import { SubjectsService } from '../services/subjects.service';
 })
 export class ListComponent implements OnInit {
   title:string = '';
-  list:Object[];
+  list:Object[] = [];
 
   constructor(
     private route: ActivatedRoute, 
