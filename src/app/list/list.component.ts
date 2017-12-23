@@ -9,6 +9,7 @@ import { SubjectsService } from '../services/subjects.service';
   providers: [SubjectsService]
 })
 export class ListComponent implements OnInit {
+  type:string;
   title:string = '';
   list:Object[] = [];
 
@@ -20,6 +21,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
+      this.type = data.type;
       switch (data.type) {
         case 'zone': {
             this.route.params.subscribe(params => {
@@ -36,11 +38,10 @@ export class ListComponent implements OnInit {
         case 'subject': {
             this.route.params.subscribe(params => {
               const subjectId = params.id;
-             this.topicsListInit(subjectId);
+              this.topicsListInit(subjectId);
             })
           }
-          
-          break;
+        break;
       }
     })
   }
@@ -52,6 +53,11 @@ export class ListComponent implements OnInit {
 
   topicsListInit(subjectId:string) {
     this.title = `subject - ${subjectId}`;
+  }
+
+  onClickItem(id) {
+    const route = this.type === 'zone' ? 'subject' : 'topic';
+    this.router.navigate([route, id]);
   }
 
 }

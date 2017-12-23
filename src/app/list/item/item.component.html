@@ -2,7 +2,7 @@
   <div class="a">
       <mat-icon class="delete">delete_forever</mat-icon>
       <mat-icon class="edit">edit</mat-icon>
-      <span class="title">{{data.title}}</span>
+      <span class="title" (click)="onClickItem(data.id)">{{data.title}}</span>
   </div>
   <div class="b">   
     <app-select-level [value]="data.importance" label="importance level"></app-select-level>
