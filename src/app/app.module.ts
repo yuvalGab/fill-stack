@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './/app-routing.module';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -20,6 +20,7 @@ import { TopicComponent } from './topic/topic.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './common/menu/menu.component';
 import { ItemComponent } from './list/item/item.component';
+import { SelectLevelComponent } from './common/select-level/select-level.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ItemComponent } from './list/item/item.component';
     NotFoundComponent,
     MenuComponent,
     ItemComponent,
+    SelectLevelComponent,
   ],
   imports: [
     BrowserModule,

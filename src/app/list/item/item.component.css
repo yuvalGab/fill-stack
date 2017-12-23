@@ -60,18 +60,8 @@ div.b {
     text-align: center;
 }
 
-.mat-form-field:nth-child(1) {
-    margin-right: 20px;
-}
-
 @media screen and (max-width: 840px) {
     .item {
         flex-direction: column;
-    }
-}
-
-@media screen and (max-width: 440px) {
-    .mat-form-field:nth-child(1) {
-        margin-right: 0px;
     }
 }
