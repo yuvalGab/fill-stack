@@ -1,71 +1,64 @@
 import { Injectable } from '@angular/core';
 
-const mockListTopics = [
+const mockListSubjects = [
   {
     id: 1,
-    title: 'loops',
+    title: 'JavaScript',
     zone: 'client side',
-    subject: '1',
     importance: 3,
     control: 2
   },
   {
     id: 2,
-    title: 'npm',
+    title: 'Node.js',
     zone: 'server side',
-    subject: '2',
     importance: 3,
     control: 1
   },
   {
     id: 3,
-    title: 'commit',
+    title: 'git',
     zone: 'both sides',
-    subject: '3',
     importance: 2,
     control: 2
   },
   {
     id: 4,
-    title: 'images',
+    title: 'docker',
     zone: 'both sides',
-    subject: '4',
     importance: 1,
     control: 3
   },
   {
     id: 5,
-    title: 'tags',
+    title: 'HTML',
     zone: 'client side',
-    subject: '5',
     importance: 3,
     control: 2
   },
   {
     id: 6,
-    title: 'collections',
+    title: 'Mongo.DB',
     zone: 'server side',
-    subject: '6',
     importance: 2,
     control: 3
   },
   {
     id: 7,
-    title: 'schema',
+    title: 'MySQL',
     zone: 'server side',
-    subject: '6',
     importance: 3,
     control: 2
   }
 ];
 
 @Injectable()
-export class TopicsService {
+export class SubjectService {
 
   constructor() { }
 
-  getTopics(subjectId:string) {
-    return mockListTopics.filter(i => i.subject === subjectId);
+  getSubjects(zone:string) {
+    return mockListSubjects.filter(i => i.zone === zone);
   }
 
 }

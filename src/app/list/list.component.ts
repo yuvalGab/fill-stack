@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SubjectsService } from '../services/subjects.service';
-import { TopicsService } from '../services/topics.service';
+import { SubjectService } from '../services/subject.service';
+import { TopicService } from '../services/topic.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
-  providers: [SubjectsService, TopicsService]
+  providers: [SubjectService, TopicService]
 })
 export class ListComponent implements OnInit {
   type:string;
@@ -15,10 +15,10 @@ export class ListComponent implements OnInit {
   list:Object[] = [];
 
   constructor(
-    private route: ActivatedRoute, 
-    private router: Router,
-    private subjects:SubjectsService,
-    private topics:TopicsService
+    private route:ActivatedRoute, 
+    private router:Router,
+    private subject:SubjectService,
+    private topic:TopicService
   ) { }
 
   ngOnInit() {
@@ -50,12 +50,12 @@ export class ListComponent implements OnInit {
 
   subjectsListInit(zone:string) {
     this.title = `${zone} subjects list`;
-    this.list = this.subjects.getSubjects(zone);
+    this.list = this.subject.getSubjects(zone);
   }
 
   topicsListInit(subjectId:string) {
     this.title = `subject - ${subjectId}`;
-    this.list = this.topics.getTopics(subjectId);
+    this.list = this.topic.getTopics(subjectId);
   }
 
   onClickItem(id) {
