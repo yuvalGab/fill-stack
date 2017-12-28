@@ -16,10 +16,7 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(data) {
     const { valid, value } = data;
-    if (valid) {
-
-      // TODO: chack if password === retype password
-        
+    if (valid && value.password === value.retypePassword) {
       this.error = '';
       console.log(value);
       this.router.navigate(['sign-in']);
