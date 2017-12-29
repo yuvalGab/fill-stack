@@ -11,4 +11,8 @@ router.post('/login', (req, res) => {
     res.send(User.login(req.body));
 })
 
+router.get('/getFullName', (req, res) => {
+    res.send(User.getFullName());
+})
+
 module.exports = router;

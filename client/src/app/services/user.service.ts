@@ -15,4 +15,7 @@ export class UserService {
     return this.http.post('/api/user/login', user).map(res => res.json());
   }
 
+  getFullName() {
+    return this.http.get('/api/user/getFullName').map(res => res.json());
+  }
 }

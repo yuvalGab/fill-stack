@@ -16,5 +16,9 @@ module.exports = {
     login({ username, password }) {
         const existUser = users.find(u => u.username === username && u.password === password);
         return !!existUser;
+    },
+
+    getFullName() {
+        return { fullName: users[0].fullName };
     }
 };
