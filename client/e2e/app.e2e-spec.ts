@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('fill-stack App', () => {
+describe('fill-stack-client App', () => {
   let page: AppPage;
 
   beforeEach(() => {
