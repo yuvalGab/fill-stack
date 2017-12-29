@@ -57,7 +57,9 @@ export class ListComponent implements OnInit {
 
   topicsListInit(subjectId:string) {
     this.title = `subject - ${subjectId}`;
-    this.list = this.topic.getTopics(subjectId);
+    this.topic.getAll(subjectId).subscribe(list => {
+      this.list = list;
+    });
   }
 
   onClickItem(id) {
