@@ -4,8 +4,7 @@ const users = [
         username: 'yuval',
         password: '123456',
         email: 'yuvalgab2007@gmail.com',
-        firstName: 'Yuval',
-        lastName: 'Gabian'
+        fullName: 'Yuval Gabian',
     }
 ];
 

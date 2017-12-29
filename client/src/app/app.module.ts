@@ -8,6 +8,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './/app-routing.module';
 import { MatSelectModule } from '@angular/material/select';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -37,7 +38,7 @@ import { SelectLevelComponent } from './common/select-level/select-level.compone
     NotFoundComponent,
     MenuComponent,
     ItemComponent,
-    SelectLevelComponent,
+    SelectLevelComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { SelectLevelComponent } from './common/select-level/select-level.compone
     MatSlideToggleModule,
     MatIconModule,
     AppRoutingModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
