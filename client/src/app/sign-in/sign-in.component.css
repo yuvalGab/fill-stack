@@ -19,6 +19,14 @@ button {
     margin: 20px auto;
 }
 
+.error, .success {
+    margin: 12px;
+}
+
 .error {
     color: red;
+}
+
+.success {
+    color: blue;
 }
