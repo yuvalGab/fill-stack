@@ -50,7 +50,9 @@ export class ListComponent implements OnInit {
 
   subjectsListInit(zone:string) {
     this.title = `${zone} subjects list`;
-    this.list = this.subject.getSubjects(zone);
+    this.subject.getAll(zone).subscribe(list => {
+      this.list = list;
+    });
   }
 
   topicsListInit(subjectId:string) {
