@@ -62,5 +62,9 @@ module.exports = {
 
   getTitle(subjectId) {
     return { title: subjects[+subjectId].title };
+  },
+
+  getZone(subjectId) {
+    return subjects[subjectId].zone;
   }
 };

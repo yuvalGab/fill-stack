@@ -1,3 +1,5 @@
+const Subject = require('./subject');
+
 const topics = [
   {
     id: 0,
@@ -63,7 +65,9 @@ module.exports = {
   },
 
   add(newTopic) {
-    topics.push({ id: topics.length, ...newTopic});
+    const { subject:subjectId } = newTopic;
+    const zone = Subject.getZone(subjectId); 
+    topics.push({ id: topics.length, zone, ...newTopic});
     return true;
   }
 };

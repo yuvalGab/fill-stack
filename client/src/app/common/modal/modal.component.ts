@@ -52,7 +52,6 @@ export class ModalComponent implements OnInit {
     this.topic.add(
       {
         title: this.value,
-        zone: 'zone', // TODO: get subject zone name
         subject: this.data.params.subjectId,
         importance: 1,
         control: 1
