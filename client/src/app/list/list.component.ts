@@ -4,18 +4,19 @@ import { SubjectService } from '../services/subject.service';
 import { TopicService } from '../services/topic.service';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../common/modal/modal.component';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
-  providers: [SubjectService, TopicService]
+  styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
   type:string;
   title:string = '';
   list:Object[] = [];
-  zone:string = '';
+  zone:string;
+  subjectId:number;
 
   constructor(
     private route:ActivatedRoute, 
@@ -45,24 +46,29 @@ export class ListComponent implements OnInit {
         case 'subject': {
             this.route.params.subscribe(params => {
               const subjectId = params.id;
+              this.subjectId = +subjectId;
               this.topicsListInit(subjectId);
             })
           }
         break;
       }
     })
+
+
   }
 
   subjectsListInit(zone:string) {
     this.title = `${zone} subjects list`;
-    this.subject.getAll(zone).subscribe(list => {
-      this.list = list;
+    this.subject.getAll(zone);
+    this.subject.list.subscribe(newList => {
+      this.list = newList;
     });
   }
 
   topicsListInit(subjectId:string) {
-    this.title = `subject - ${subjectId}`;
-    this.topic.getAll(subjectId).subscribe(list => {
+    this.title = `subject - ${subjectId}`; // TODO: get subject zone
+    this.topic.getAll(subjectId);
+    this.topic.list.subscribe(list => {
       this.list = list;
     });
   }
@@ -79,7 +85,7 @@ export class ListComponent implements OnInit {
         }
         break;
       case 'subject': {
-
+        this.openDialog('add', 'topic', '', { subjectId: this.subjectId });
       }
       break;
     }

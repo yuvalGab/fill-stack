@@ -25,6 +25,8 @@ import { ItemComponent } from './list/item/item.component';
 import { SelectLevelComponent } from './common/select-level/select-level.component';
 import { ModalComponent } from './common/modal/modal.component';
 
+import { SubjectService } from './services/subject.service';
+import { TopicService } from './services/topic.service';
 
 @NgModule({
   declarations: [
@@ -56,8 +58,8 @@ import { ModalComponent } from './common/modal/modal.component';
     HttpModule,
     MatDialogModule
   ],
-  entryComponents: [ ModalComponent ],
-  providers: [],
+  entryComponents: [ModalComponent],
+  providers: [SubjectService, TopicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

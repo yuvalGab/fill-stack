@@ -60,5 +60,11 @@ const topics = [
 module.exports = {
   getAll(subjectId) {
     return topics.filter(s => s.subject === +subjectId);
+  },
+
+  add(newTopic) {
+    topics.push({ id: topics.length, ...newTopic});
+    console.log(topics);
+    return true;
   }
 };
