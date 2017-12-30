@@ -24,34 +24,42 @@ export class ModalComponent implements OnInit {
       if (result) {
         if (this.data.action === 'add' && this.value) {
           if (this.data.type === 'subject') {
-            this.subject.add(
-              {
-                title: this.value,
-                zone: this.data.params.zone,
-                importance: 1,
-                control: 1
-              }
-            ).subscribe(result => {
-              if (result) {
-                this.subject.getAll(this.data.params.zone);
-              }
-            });
+            this.addSubject();
           } else if (this.data.type === 'topic') {
-            this.topic.add(
-              {
-                title: this.value,
-                zone: 'zone', // TODO: get subject zone name
-                subject: this.data.params.subjectId,
-                importance: 1,
-                control: 1
-              }
-            ).subscribe(result => {
-              if (result) {
-                this.topic.getAll(this.data.params.subjectId);
-              }
-            });
+            this.addTopic();
           }
         }
+      }
+    });
+  }
+
+  addSubject() {
+    this.subject.add(
+      {
+        title: this.value,
+        zone: this.data.params.zone,
+        importance: 1,
+        control: 1
+      }
+    ).subscribe(result => {
+      if (result) {
+        this.subject.getAll(this.data.params.zone);
+      }
+    });
+  }
+
+  addTopic() {
+    this.topic.add(
+      {
+        title: this.value,
+        zone: 'zone', // TODO: get subject zone name
+        subject: this.data.params.subjectId,
+        importance: 1,
+        control: 1
+      }
+    ).subscribe(result => {
+      if (result) {
+        this.topic.getAll(this.data.params.subjectId);
       }
     });
   }
