@@ -7,4 +7,8 @@ router.get('/getAll/:zone', (req, res) => {
   res.send(Subject.getAll(zone));
 });
 
+router.post('/add', (req, res) => {
+  res.send(Subject.add(req.body));
+});
+
 module.exports = router;

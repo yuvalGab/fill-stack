@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SubjectService } from '../services/subject.service';
 import { TopicService } from '../services/topic.service';
+import { MatDialog } from '@angular/material';
+import { ModalComponent } from '../common/modal/modal.component';
 
 @Component({
   selector: 'app-list',
@@ -13,12 +15,14 @@ export class ListComponent implements OnInit {
   type:string;
   title:string = '';
   list:Object[] = [];
+  zone:string = '';
 
   constructor(
     private route:ActivatedRoute, 
     private router:Router,
     private subject:SubjectService,
-    private topic:TopicService
+    private topic:TopicService,
+    public dialog:MatDialog
   ) { }
 
   ngOnInit() {
@@ -29,6 +33,7 @@ export class ListComponent implements OnInit {
             this.route.params.subscribe(params => {
               const zone = params.name.replace('-', ' ');
               if (zone === 'client side' || zone === 'server side' || zone === 'both sides') {
+                this.zone = zone;
                 this.subjectsListInit(zone);
               } else {
                 this.router.navigate(['404']);
@@ -67,4 +72,23 @@ export class ListComponent implements OnInit {
     this.router.navigate([route, id]);
   }
 
+  addItem() {
+    switch (this.type) {
+      case 'zone': {
+          this.openDialog('add', 'subject', '', { zone: this.zone });
+        }
+        break;
+      case 'subject': {
+
+      }
+      break;
+    }
+  }
+
+  openDialog(action:string, type:string, msg:string, params:object):void {
+    let dialogRef = this.dialog.open(ModalComponent, {
+      width: '350px',
+      data: { action, type, msg, params }
+    });
+  }
 }

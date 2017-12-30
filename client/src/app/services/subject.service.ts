@@ -11,4 +11,8 @@ export class SubjectService {
     return this.http.get(`/api/subject/getAll/${zone}`).map(res => res.json());
   }
 
+  add(newSubject:object) {
+    return this.http.post('/api/subject/add', newSubject).map(res => res.json());
+  }
+
 }

@@ -53,5 +53,10 @@ const subjects = [
 module.exports = {
   getAll(zone) {
     return subjects.filter(s => s.zone === zone);
+  },
+
+  add(newSubject) {
+    subjects.push({ id: subjects.length, ...newSubject });
+    return true;
   }
 };

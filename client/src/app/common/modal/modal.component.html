@@ -1,0 +1,13 @@
+<section>
+  <h2 mat-dialog-title>{{data.action}} new {{data.type}}</h2>
+  <mat-dialog-content>
+    <p>{{data.msg}}</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="value" />
+    </mat-form-field> 
+  </mat-dialog-content>
+  <mat-dialog-actions>  
+    <button mat-raised-button mat-dialog-close>cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" [disabled]="!value.length">ok</button>
+  </mat-dialog-actions>
+</section>

@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './/app-routing.module';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpModule } from '@angular/http';
+import { MatDialogModule  } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -22,6 +23,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './common/menu/menu.component';
 import { ItemComponent } from './list/item/item.component';
 import { SelectLevelComponent } from './common/select-level/select-level.component';
+import { ModalComponent } from './common/modal/modal.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { SelectLevelComponent } from './common/select-level/select-level.compone
     NotFoundComponent,
     MenuComponent,
     ItemComponent,
-    SelectLevelComponent
+    SelectLevelComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +53,10 @@ import { SelectLevelComponent } from './common/select-level/select-level.compone
     MatIconModule,
     AppRoutingModule,
     MatSelectModule,
-    HttpModule
+    HttpModule,
+    MatDialogModule
   ],
+  entryComponents: [ ModalComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })
