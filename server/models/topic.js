@@ -64,7 +64,6 @@ module.exports = {
 
   add(newTopic) {
     topics.push({ id: topics.length, ...newTopic});
-    console.log(topics);
     return true;
   }
 };
