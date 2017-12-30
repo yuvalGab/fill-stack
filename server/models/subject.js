@@ -58,5 +58,9 @@ module.exports = {
   add(newSubject) {
     subjects.push({ id: subjects.length, ...newSubject });
     return true;
+  },
+
+  getTitle(subjectId) {
+    return { title: subjects[+subjectId].title };
   }
 };

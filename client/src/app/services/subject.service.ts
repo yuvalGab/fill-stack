@@ -19,4 +19,7 @@ export class SubjectService {
     return this.http.post('/api/subject/add', newSubject).map(res => res.json());
   }
 
+  getTitle(subjectId:string) {
+    return this.http.get(`/api/subject/getTitle/${subjectId}`).map(res => res.json());
+  }
 }
