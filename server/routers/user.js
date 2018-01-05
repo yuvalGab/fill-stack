@@ -8,11 +8,18 @@ router.post('/create', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  res.send(User.login(req.body));
+  const isLogin = User.login(req.body);
+  req.session.authenticated = isLogin;
+  res.send(isLogin);
 });
 
 router.get('/logout', (req, res) => {
+  req.session.authenticated = false;
   res.send(true);
+});
+
+router.get('/isLogedIn', (req, res) => {
+  res.send(req.session.authenticated ? true : false);
 });
 
 router.get('/getFullName', (req, res) => {

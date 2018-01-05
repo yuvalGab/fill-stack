@@ -14,6 +14,11 @@ export class SignInComponent implements OnInit {
   constructor(private router: Router, private user:UserService) { }
 
   ngOnInit() {
+    this.user.isLogedIn().subscribe(isLogedIn => {
+      if (isLogedIn) {
+        this.router.navigate(['home']);
+      }
+    })
   }
 
   onSubmit(data) {

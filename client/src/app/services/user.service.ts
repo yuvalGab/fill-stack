@@ -28,6 +28,14 @@ export class UserService {
     });
   }
 
+  isLogedIn() {
+    return this.http.get('/api/user/isLogedIn').map(res => {
+      const isLogin =  res.json();
+      this.isLogin.emit(isLogin);
+      return isLogin;
+    });
+  }
+
   getFullName() {
     return this.http.get('/api/user/getFullName').map(res => res.json());
   }

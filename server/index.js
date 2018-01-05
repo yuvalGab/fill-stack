@@ -1,13 +1,16 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-
+const expressSession = require('express-session');
 const userRouter = require('./routers/user');
 const subjectRouter = require('./routers/subject');
 const topicRouter = require('./routers/topic');
+const { checkAuth } = require('./utils/checkAuth');
+const app = express();
 
 app.use(express.static('../client/dist'));
+app.use(expressSession({ secret: 'stack' }));
 app.use(bodyParser.json());
+app.use(checkAuth);
 
 app.use('/api/user', userRouter);
 app.use('/api/subject', subjectRouter);
