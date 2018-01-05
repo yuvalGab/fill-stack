@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Input() showLogout:boolean = true;
+  showLogout:boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private user:UserService) { }
 
   ngOnInit() {
+    this.user.isLogin.subscribe(result => {
+      this.showLogout = result;
+    });
   }
 
   onLogOut() {
-    this.router.navigate(['sign-in']);
+    this.user.logout().subscribe(result => {
+      if (result) {
+        this.router.navigate(['sign-in']);
+      }
+    });
   }
 }

@@ -11,6 +11,10 @@ router.post('/login', (req, res) => {
   res.send(User.login(req.body));
 });
 
+router.get('/logout', (req, res) => {
+  res.send(true);
+});
+
 router.get('/getFullName', (req, res) => {
   res.send(User.getFullName());
 });

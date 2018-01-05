@@ -27,6 +27,7 @@ import { ModalComponent } from './common/modal/modal.component';
 
 import { SubjectService } from './services/subject.service';
 import { TopicService } from './services/topic.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,11 @@ import { TopicService } from './services/topic.service';
     MatDialogModule
   ],
   entryComponents: [ModalComponent],
-  providers: [SubjectService, TopicService],
+  providers: [
+    SubjectService, 
+    TopicService, 
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
