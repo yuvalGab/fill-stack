@@ -83,7 +83,7 @@ export class ModalComponent implements OnInit {
   }
 
   editTopic() {
-    this.topic.edit(this.data.params.topictId, { title: this.value })
+    this.topic.edit(this.data.params.topicId, { title: this.value })
     .subscribe( result => {
       if (result) {
         this.topic.getAll(this.data.params.subjectId);

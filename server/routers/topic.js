@@ -11,4 +11,8 @@ router.post('/add', (req, res) => {
   res.send(Topic.add(req.body));
 });
 
+router.put('/edit', (req, res) => {
+  res.send(Topic.edit(req.body));
+});
+
 module.exports = router;

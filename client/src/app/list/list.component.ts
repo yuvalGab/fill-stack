@@ -107,7 +107,7 @@ export class ListComponent implements OnInit {
         }
         break;
       case 'subject': {
-          this.openDialog('edit', 'topic','edit topic', '', item.title, { subjectId: this.subjectId, topicid: item.id });
+          this.openDialog('edit', 'topic','edit topic', '', item.title, { subjectId: this.subjectId, topicId: item.id });
         }
         break;
     }

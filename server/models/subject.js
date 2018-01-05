@@ -55,16 +55,29 @@ module.exports = {
     return subjects.filter(s => s.zone === zone);
   },
 
-  add(newSubject) {
-    subjects.push({ id: subjects.length, ...newSubject });
-    return true;
-  },
-
   getTitle(subjectId) {
     return { title: subjects[+subjectId].title };
   },
 
   getZone(subjectId) {
     return subjects[subjectId].zone;
+  },
+
+  add(newSubject) {
+    subjects.push({ id: subjects.length, ...newSubject });
+    return true;
+  },
+
+  edit({id, subjectDetails}) {
+    const oldSubject = subjects.find(s => s.id === id);
+    this.delete(id);
+    subjects.push({ id, ...oldSubject, ...subjectDetails });
+    return true;
+  },
+
+  delete(id) {
+    const subject = subjects.find(s => s.id === id);
+    subjects.splice(subjects.indexOf(subject) , 1);
+    return true;
   }
 };

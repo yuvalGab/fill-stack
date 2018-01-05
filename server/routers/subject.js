@@ -7,13 +7,17 @@ router.get('/getAll/:zone', (req, res) => {
   res.send(Subject.getAll(zone));
 });
 
+router.get('/getTitle/:subjectId', (req, res) => {
+  const { subjectId } = req.params;
+  res.send(Subject.getTitle(subjectId));
+});
+
 router.post('/add', (req, res) => {
   res.send(Subject.add(req.body));
 });
 
-router.get('/getTitle/:subjectId', (req, res) => {
-  const { subjectId } = req.params;
-  res.send(Subject.getTitle(subjectId));
+router.put('/edit', (req, res) => {
+  res.send(Subject.edit(req.body));
 });
 
 module.exports = router;

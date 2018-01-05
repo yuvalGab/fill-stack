@@ -69,5 +69,19 @@ module.exports = {
     const zone = Subject.getZone(subjectId); 
     topics.push({ id: topics.length, zone, ...newTopic});
     return true;
+  },
+
+  edit({id, topicDetails}) {
+    console.log(id, topicDetails)
+    const oldTopic = topics.find(t => t.id === id);
+    this.delete(id);
+    topics.push({ id, ...oldTopic, ...topicDetails });
+    return true;
+  },
+
+  delete(id) {
+    const topic = topics.find(t => t.id === id);
+    topics.splice(topics.indexOf(topic) , 1);
+    return true;
   }
 };
