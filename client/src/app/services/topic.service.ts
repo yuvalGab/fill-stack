@@ -18,4 +18,8 @@ export class TopicService {
   add(newTopic:object) {
     return this.http.post('/api/topic/add', newTopic).map(res => res.json());
   }
+
+  edit(id:number, topicDetails:object) {
+    return this.http.put('/api/topic/edit', { id, topicDetails }).map(res => res.json());
+  }
 }

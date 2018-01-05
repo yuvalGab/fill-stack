@@ -15,11 +15,15 @@ export class SubjectService {
     });
   }
 
+  getTitle(subjectId:string) {
+    return this.http.get(`/api/subject/getTitle/${subjectId}`).map(res => res.json());
+  }
+
   add(newSubject:object) {
     return this.http.post('/api/subject/add', newSubject).map(res => res.json());
   }
 
-  getTitle(subjectId:string) {
-    return this.http.get(`/api/subject/getTitle/${subjectId}`).map(res => res.json());
+  edit(id:number, subjectDetails:object) {
+    return this.http.put('/api/subject/edit', { id, subjectDetails }).map(res => res.json());
   }
 }

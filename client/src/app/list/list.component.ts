@@ -50,7 +50,7 @@ export class ListComponent implements OnInit {
               this.topicsListInit(subjectId);
             })
           }
-        break;
+          break;
       }
     })
 
@@ -80,23 +80,36 @@ export class ListComponent implements OnInit {
     this.router.navigate([route, id]);
   }
 
+  openDialog(action:string, type:string, title:string, msg:string, value:string, params:object):void {
+    let dialogRef = this.dialog.open(ModalComponent, {
+      width: '350px',
+      data: { action, type, title, msg, value, params }
+    });
+  }
+
   addItem() {
     switch (this.type) {
       case 'zone': {
-          this.openDialog('add', 'subject', '', { zone: this.zone });
+          this.openDialog('add', 'subject', 'add new subject', '', '', { zone: this.zone });
         }
         break;
       case 'subject': {
-        this.openDialog('add', 'topic', '', { subjectId: this.subjectId });
-      }
-      break;
+          this.openDialog('add', 'topic', 'add new topic', '', '', { subjectId: this.subjectId });
+        }
+        break;
     }
   }
 
-  openDialog(action:string, type:string, msg:string, params:object):void {
-    let dialogRef = this.dialog.open(ModalComponent, {
-      width: '350px',
-      data: { action, type, msg, params }
-    });
+  editItem(item) {
+    switch (this.type) {
+      case 'zone': {
+          this.openDialog('edit', 'subject', 'edit subject', '', item.title, { zone: this.zone, subjectId: item.id });
+        }
+        break;
+      case 'subject': {
+          this.openDialog('edit', 'topic','edit topic', '', item.title, { subjectId: this.subjectId, topicid: item.id });
+        }
+        break;
+    }
   }
 }

@@ -20,6 +20,8 @@ export class ModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.value = this.data.value;
+
     this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (this.data.action === 'add' && this.value) {
@@ -27,6 +29,14 @@ export class ModalComponent implements OnInit {
             this.addSubject();
           } else if (this.data.type === 'topic') {
             this.addTopic();
+          }
+        }
+
+        if (this.data.action === 'edit' && this.value) {
+          if (this.data.type === 'subject') {
+            this.editSubject();
+          } else if (this.data.type === 'topic') {
+            this.editTopic();
           }
         }
       }
@@ -57,6 +67,24 @@ export class ModalComponent implements OnInit {
         control: 1
       }
     ).subscribe(result => {
+      if (result) {
+        this.topic.getAll(this.data.params.subjectId);
+      }
+    });
+  }
+
+  editSubject() {
+    this.subject.edit(this.data.params.subjectId, { title: this.value })
+    .subscribe( result => {
+      if (result) {
+        this.subject.getAll(this.data.params.zone);
+      }
+    });
+  }
+
+  editTopic() {
+    this.topic.edit(this.data.params.topictId, { title: this.value })
+    .subscribe( result => {
       if (result) {
         this.topic.getAll(this.data.params.subjectId);
       }

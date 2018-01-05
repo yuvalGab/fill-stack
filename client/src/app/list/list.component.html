@@ -8,6 +8,6 @@
   </div>
   <p class="no-items" *ngIf="!list.length">there are no items to show...</p>
   <div *ngFor="let item of list">
-    <app-item [data]="item" (onClick)="onClickItem($event)"></app-item>
+    <app-item [data]="item" (onClick)="onClickItem($event)" (onEdit)="editItem($event)"></app-item>
   </div>
 </section>
