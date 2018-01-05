@@ -26,4 +26,8 @@ export class SubjectService {
   edit(id:number, subjectDetails:object) {
     return this.http.put('/api/subject/edit', { id, subjectDetails }).map(res => res.json());
   }
+
+  delete(subjectId:number) {
+    return this.http.delete(`/api/subject/delete/${subjectId}`).map(res => res.json());
+  }
 }

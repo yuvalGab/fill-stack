@@ -1,6 +1,6 @@
 <div class="item">
   <div class="a">
-      <mat-icon class="delete">delete_forever</mat-icon>
+      <mat-icon class="delete" (click)="onDeleteItem(data.id)">delete_forever</mat-icon>
       <mat-icon class="edit" (click)="onEditItem(data.id, data.title)">edit</mat-icon>
       <span class="title" (click)="onClickItem(data.id)">{{data.title}}</span>
   </div>

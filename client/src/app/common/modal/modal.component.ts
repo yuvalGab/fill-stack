@@ -39,6 +39,14 @@ export class ModalComponent implements OnInit {
             this.editTopic();
           }
         }
+
+        if (this.data.action === 'delete') {
+          if (this.data.type === 'subject') {
+            this.deleteSubject();
+          } else if (this.data.type === 'topic') {
+            this.deleteTopic();
+          }
+        }
       }
     });
   }
@@ -91,4 +99,19 @@ export class ModalComponent implements OnInit {
     });
   }
 
+  deleteSubject() {
+    this.subject.delete(this.data.params.subjectId).subscribe(result => {
+      if (result) {
+        this.subject.getAll(this.data.params.zone);
+      }
+    });
+  }
+
+  deleteTopic() {
+    this.topic.delete(this.data.params.topicId).subscribe(result => {
+      if (result) {
+        this.topic.getAll(this.data.params.subjectId);
+      }
+    });
+  }
 }

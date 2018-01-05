@@ -72,7 +72,6 @@ module.exports = {
   },
 
   edit({id, topicDetails}) {
-    console.log(id, topicDetails)
     const oldTopic = topics.find(t => t.id === id);
     this.delete(id);
     topics.push({ id, ...oldTopic, ...topicDetails });

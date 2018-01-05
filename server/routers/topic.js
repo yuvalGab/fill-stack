@@ -15,4 +15,9 @@ router.put('/edit', (req, res) => {
   res.send(Topic.edit(req.body));
 });
 
+router.delete('/delete/:topicId', (req, res) => {
+  const { topicId } = req.params; 
+  res.send(Topic.delete(+topicId));
+});
+
 module.exports = router;

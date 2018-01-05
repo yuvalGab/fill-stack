@@ -22,4 +22,8 @@ export class TopicService {
   edit(id:number, topicDetails:object) {
     return this.http.put('/api/topic/edit', { id, topicDetails }).map(res => res.json());
   }
+
+  delete(topicId:number) {
+    return this.http.delete(`/api/topic/delete/${topicId}`).map(res => res.json());
+  }
 }

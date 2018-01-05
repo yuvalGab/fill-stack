@@ -112,4 +112,18 @@ export class ListComponent implements OnInit {
         break;
     }
   }
+
+  deleteItem(id:number) {
+    const msg = 'are you sure you want to delete this item?';
+    switch (this.type) {
+      case 'zone': {
+          this.openDialog('delete', 'subject', 'delete subject', msg, '', { zone: this.zone, subjectId: id });
+        }
+        break;
+      case 'subject': {
+          this.openDialog('delete', 'topic','delete topic', msg, '', { subjectId: this.subjectId, topicId: id });
+        }
+        break;
+    }
+  }
 }
