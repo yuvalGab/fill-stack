@@ -5,7 +5,7 @@
       <span class="title" (click)="onClickItem(data.id)">{{data.title}}</span>
   </div>
   <div class="b">   
-    <app-select-level [value]="data.importance" label="importance level"></app-select-level>
-    <app-select-level [value]="data.control" label="control level"></app-select-level>
+    <app-select-level [value]="data.importance" label="importance level" (onChange)="onChangeLevel('importance', data.id, $event)"></app-select-level>
+    <app-select-level [value]="data.control" label="control level" (onChange)="onChangeLevel('control', data.id, $event)"></app-select-level>
   </div>
 </div>

@@ -87,7 +87,7 @@ export class ListComponent implements OnInit {
     });
   }
 
-  addItem() {
+  onAddItem() {
     switch (this.type) {
       case 'zone': {
           this.openDialog('add', 'subject', 'add new subject', '', '', { zone: this.zone });
@@ -100,7 +100,7 @@ export class ListComponent implements OnInit {
     }
   }
 
-  editItem(item) {
+  onEditItem(item) {
     switch (this.type) {
       case 'zone': {
           this.openDialog('edit', 'subject', 'edit subject', '', item.title, { zone: this.zone, subjectId: item.id });
@@ -113,7 +113,7 @@ export class ListComponent implements OnInit {
     }
   }
 
-  deleteItem(id:number) {
+  onDeleteItem(id:number) {
     const msg = 'are you sure you want to delete this item?';
     switch (this.type) {
       case 'zone': {
@@ -122,6 +122,20 @@ export class ListComponent implements OnInit {
         break;
       case 'subject': {
           this.openDialog('delete', 'topic','delete topic', msg, '', { subjectId: this.subjectId, topicId: id });
+        }
+        break;
+    }
+  }
+
+  onChangeLevel({ type, id, value}) {
+    const newDetails = type === 'importance' ? { importance: value } : { control: value };
+    switch (this.type) {
+      case 'zone': {
+          this.subject.edit(id, newDetails).subscribe();
+        }
+        break;
+      case 'subject': {
+          this.topic.edit(id, newDetails).subscribe();
         }
         break;
     }

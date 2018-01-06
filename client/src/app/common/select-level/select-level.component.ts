@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-select-level',
@@ -8,10 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SelectLevelComponent implements OnInit {
   @Input() value:number;
   @Input() label:string = 'select level';
+  @Output() onChange = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onChangeLevel(e) {
+    this.onChange.emit(e.value);
   }
 
 }

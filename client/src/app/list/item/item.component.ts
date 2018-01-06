@@ -10,6 +10,7 @@ export class ItemComponent implements OnInit {
   @Output() onClick = new EventEmitter();
   @Output() onEdit = new EventEmitter();
   @Output() onDelete = new EventEmitter();
+  @Output() onChange = new EventEmitter();
 
   constructor() { }
 
@@ -26,5 +27,9 @@ export class ItemComponent implements OnInit {
 
   onDeleteItem(id:number) {
     this.onDelete.emit(id);
+  }
+
+  onChangeLevel(type, id, value) {
+    this.onChange.emit({ type, id, value });
   }
 }
