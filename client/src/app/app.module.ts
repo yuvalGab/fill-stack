@@ -28,6 +28,7 @@ import { ModalComponent } from './common/modal/modal.component';
 import { SubjectService } from './services/subject.service';
 import { TopicService } from './services/topic.service';
 import { UserService } from './services/user.service';
+import { UserGuard } from './user.guard';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { UserService } from './services/user.service';
   providers: [
     SubjectService, 
     TopicService, 
-    UserService
+    UserService,
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })
