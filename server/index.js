@@ -8,7 +8,11 @@ const { checkAuth } = require('./utils/checkAuth');
 const app = express();
 
 app.use(express.static('../client/dist'));
-app.use(expressSession({ secret: 'stack' }));
+app.use(expressSession({ 
+  secret: 'stack',
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(bodyParser.json());
 app.use(checkAuth);
 
