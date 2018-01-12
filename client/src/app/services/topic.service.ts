@@ -15,6 +15,10 @@ export class TopicService {
     });
   }
 
+  getOne(topicId:string) {
+    return this.http.get(`/api/topic/getOne/${topicId}`).map(res => res.json());
+  }
+
   add(newTopic:object) {
     return this.http.post('/api/topic/add', newTopic).map(res => res.json());
   }

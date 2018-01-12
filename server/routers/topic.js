@@ -7,6 +7,11 @@ router.get('/getAll/:subjectId', (req, res) => {
   res.send(Topic.getAll(subjectId));
 });
 
+router.get('/getOne/:topicId', (req, res) => {
+  const { topicId } = req.params;
+  res.send(Topic.getOne(topicId));
+});
+
 router.post('/add', (req, res) => {
   res.send(Topic.add(req.body));
 });
@@ -17,7 +22,7 @@ router.put('/edit', (req, res) => {
 
 router.delete('/delete/:topicId', (req, res) => {
   const { topicId } = req.params; 
-  res.send(Topic.delete(+topicId));
+  res.send(Topic.delete(topicId));
 });
 
 module.exports = router;

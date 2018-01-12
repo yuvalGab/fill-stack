@@ -76,7 +76,7 @@ module.exports = {
   },
 
   delete(id) {
-    const subject = subjects.find(s => s.id === id);
+    const subject = subjects.find(s => s.id === +id);
     subjects.splice(subjects.indexOf(subject) , 1);
     return true;
   }

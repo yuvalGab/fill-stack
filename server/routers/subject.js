@@ -22,7 +22,7 @@ router.put('/edit', (req, res) => {
 
 router.delete('/delete/:subjectId', (req, res) => {
   const { subjectId } = req.params; 
-  res.send(Subject.delete(+subjectId));
+  res.send(Subject.delete(subjectId));
 });
 
 module.exports = router;

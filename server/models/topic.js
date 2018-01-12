@@ -64,6 +64,10 @@ module.exports = {
     return topics.filter(s => s.subject === +subjectId);
   },
 
+  getOne(topicId) {
+    return topics.find(s => s.id === +topicId);
+  },
+
   add(newTopic) {
     const { subject:subjectId } = newTopic;
     const zone = Subject.getZone(subjectId); 
@@ -79,7 +83,7 @@ module.exports = {
   },
 
   delete(id) {
-    const topic = topics.find(t => t.id === id);
+    const topic = topics.find(t => t.id === +id);
     topics.splice(topics.indexOf(topic) , 1);
     return true;
   }
