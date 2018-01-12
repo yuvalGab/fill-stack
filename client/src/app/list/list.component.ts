@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SubjectService } from '../services/subject.service';
 import { TopicService } from '../services/topic.service';
 import { MatDialog } from '@angular/material';
-import { ModalComponent } from '../common/modal/modal.component';
+import { ModalComponent } from '../list/modal/modal.component';
 import { Subject } from 'rxjs/Subject';
 
 @Component({

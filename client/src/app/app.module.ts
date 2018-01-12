@@ -23,7 +23,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './common/menu/menu.component';
 import { ItemComponent } from './list/item/item.component';
 import { SelectLevelComponent } from './common/select-level/select-level.component';
-import { ModalComponent } from './common/modal/modal.component';
+import { ModalComponent } from './list/modal/modal.component';
 
 import { SubjectService } from './services/subject.service';
 import { TopicService } from './services/topic.service';
