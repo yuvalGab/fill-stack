@@ -60,7 +60,7 @@ module.exports = {
   },
 
   getZone(subjectId) {
-    return subjects[subjectId].zone;
+    return subjects.find(s => s.id === subjectId).zone;
   },
 
   add(newSubject) {
