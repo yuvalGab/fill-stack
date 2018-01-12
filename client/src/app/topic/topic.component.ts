@@ -9,7 +9,9 @@ import { TopicService } from '../services/topic.service';
 })
 export class TopicComponent implements OnInit {
   isLoaded:boolean = false;
-  data:object;
+  data:any;
+  description:string;
+  isDescDirty:boolean = false;
 
   constructor(
     private route:ActivatedRoute, 
@@ -22,8 +24,30 @@ export class TopicComponent implements OnInit {
       const { id } = params;
       this.topic.getOne(id).subscribe(result => {
         this.data = result;
+        this.description = this.data.description;
         this.isLoaded = true;
       });
+    });
+  }
+
+  onDescriptionChange(e) {
+    const { value } = e.target;
+    this.description = value;
+    this.isDescDirty = value !== this.data.description;
+  }
+
+  onRedoDesc() {
+    this.description = this.data.description;
+    this.isDescDirty = false;
+  }
+
+  onSaveDesc() {
+    this.topic.edit(this.data.id, { description: this.description })
+    .subscribe(result => {
+      if (result) {
+        this.data.description = this.description;
+        this.isDescDirty = false;
+      }
     });
   }
 

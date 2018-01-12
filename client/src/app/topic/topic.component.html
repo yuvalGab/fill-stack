@@ -1,5 +1,20 @@
 <app-menu></app-menu>
 <section *ngIf="isLoaded">
     <h3>{{data.title}} topic</h3>
+    <div class="content">
+        <div class="levels">
+            <h4>levels:</h4>
+            <span>importance level: <b>{{data.importance}}</b></span>
+            <span>control level: <b>{{data.control}}</b></span>   
+        </div>
+        <div class="description">
+            <button [disabled]="!isDescDirty" (click)="onRedoDesc()">
+                <mat-icon>redo</mat-icon>
+            </button>
+            <button [disabled]="!isDescDirty" (click)="onSaveDesc()">
+                <mat-icon>save</mat-icon>
+            </button>           
+            <textarea (input)="onDescriptionChange($event)" [value]="description"></textarea>
+        </div>
+    </div>    
 </section>
-      

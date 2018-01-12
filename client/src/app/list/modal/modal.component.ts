@@ -72,7 +72,8 @@ export class ModalComponent implements OnInit {
         title: this.value,
         subject: this.data.params.subjectId,
         importance: 1,
-        control: 1
+        control: 1,
+        description: ''
       }
     ).subscribe(result => {
       if (result) {

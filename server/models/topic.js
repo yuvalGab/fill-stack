@@ -7,7 +7,8 @@ const topics = [
     zone: 'client side',
     subject: 1,
     importance: 3,
-    control: 2
+    control: 2,
+    description: 'simple text'
   },
   {
     id: 1,
@@ -23,7 +24,8 @@ const topics = [
     zone: 'both sides',
     subject: 3,
     importance: 2,
-    control: 2
+    control: 2,
+    description: 'simple text'
   },
   {
     id: 3,
@@ -31,7 +33,8 @@ const topics = [
     zone: 'both sides',
     subject: 4,
     importance: 1,
-    control: 3
+    control: 3,
+    description: 'simple text'
   },
   {
     id: 4,
@@ -39,7 +42,8 @@ const topics = [
     zone: 'client side',
     subject: 5,
     importance: 3,
-    control: 2
+    control: 2,
+    description: 'simple text'
   },
   {
     id: 5,
@@ -47,7 +51,8 @@ const topics = [
     zone: 'server side',
     subject: 6,
     importance: 2,
-    control: 3
+    control: 3,
+    description: 'simple text'
   },
   {
     id: 6,
@@ -55,7 +60,8 @@ const topics = [
     zone: 'server side',
     subject: 6,
     importance: 3,
-    control: 2
+    control: 2,
+    description: 'simple text'
   }
 ];
 
