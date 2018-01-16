@@ -1,8 +1,8 @@
-#Fill Stack
-##control your progress
+# Fill Stack
+## control your progress
 a learning management system for web developers
 
-###instructions:
+### instructions:
 1. clone/download the project
 2. run `cd client`
 3. run `npm run build`
