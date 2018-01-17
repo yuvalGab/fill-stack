@@ -10,6 +10,11 @@ router.post('/create', (req, res) => {
 router.post('/login', (req, res) => {
   const isLogin = User.login(req.body);
   req.session.authenticated = isLogin;
+  if (req.body.rememberMe) {
+    req.session.cookie.maxAge = 60480000; // week
+  } else {
+    req.session.cookie.maxAge = false;
+  }
   res.send(isLogin);
 });
 
