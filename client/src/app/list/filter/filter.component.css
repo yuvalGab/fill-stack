@@ -1,0 +1,13 @@
+
+div {
+  text-align: center;
+}
+
+.search-icon {
+  margin-right: 8px;
+  vertical-align: -10px;
+}
+
+.filter-field {
+  width: 280px;
+}

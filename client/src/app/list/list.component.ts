@@ -5,6 +5,7 @@ import { TopicService } from '../services/topic.service';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../list/modal/modal.component';
 import { Subject } from 'rxjs/Subject';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 @Component({
   selector: 'app-list',
@@ -17,6 +18,7 @@ export class ListComponent implements OnInit {
   list:Object[] = [];
   zone:string;
   subjectId:number;
+  filterBy:string = '';
 
   constructor(
     private route:ActivatedRoute, 
@@ -139,5 +141,9 @@ export class ListComponent implements OnInit {
         }
         break;
     }
+  }
+
+  onFilterList(value:string) {
+    this.filterBy = value;
   }
 }

@@ -6,8 +6,9 @@
       <mat-icon>playlist_add</mat-icon>
     </button>
   </div>
-  <p class="no-items" *ngIf="!list.length">there are no items to show...</p>
-  <div *ngFor="let item of list">
+  <app-filter *ngIf="list.length" (onFilter)="onFilterList($event)"></app-filter>
+  <p class="no-items" *ngIf="!(list | filter:filterBy).length">there are no items to show...</p>
+  <div *ngFor="let item of list | filter:filterBy">
     <app-item 
       [data]="item" 
       (onClick)="onClickItem($event)" 

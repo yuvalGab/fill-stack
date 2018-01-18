@@ -24,11 +24,14 @@ import { MenuComponent } from './common/menu/menu.component';
 import { ItemComponent } from './list/item/item.component';
 import { SelectLevelComponent } from './common/select-level/select-level.component';
 import { ModalComponent } from './list/modal/modal.component';
+import { FilterComponent } from './list/filter/filter.component';
 
 import { SubjectService } from './services/subject.service';
 import { TopicService } from './services/topic.service';
 import { UserService } from './services/user.service';
 import { UserGuard } from './user.guard';
+import { FilterPipe } from './pipes/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { UserGuard } from './user.guard';
     MenuComponent,
     ItemComponent,
     SelectLevelComponent,
-    ModalComponent
+    ModalComponent,
+    FilterPipe,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
