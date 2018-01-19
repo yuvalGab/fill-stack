@@ -76,8 +76,8 @@ module.exports = {
 
   add(newTopic) {
     const { subject:subjectId } = newTopic;
-    const zone = Subject.getZone(subjectId); 
-    topics.push({ id: topics.length, zone, ...newTopic});
+    // const zone = Subject.getZone(subjectId); 
+    topics.push({ id: topics.length, zone: 'replace it', ...newTopic});
     return true;
   },
 

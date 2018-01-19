@@ -1,15 +1,5 @@
-const db = require('../utils/db');
-const Sequelize = require('sequelize');
+const { User } = require('./index');
 const { warnings, errors} = require('../utils/messages');
-
-const User = db.define('users', {
-  username: Sequelize.STRING,
-  password: Sequelize.TEXT,
-  email: Sequelize.STRING,
-  fullName: Sequelize.STRING
-});
-
-User.sync();
 
 module.exports = {
   async create(newUser) {

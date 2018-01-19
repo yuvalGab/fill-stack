@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { SubjectService } from '../../services/subject.service';
 import { TopicService } from '../../services/topic.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modal',
@@ -16,7 +16,8 @@ export class ModalComponent implements OnInit {
     public dialogRef:MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private subject:SubjectService,
-    private topic:TopicService
+    private topic:TopicService,
+    private snackBar:MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -59,9 +60,11 @@ export class ModalComponent implements OnInit {
         importance: 1,
         control: 1
       }
-    ).subscribe(result => {
-      if (result) {
+    ).subscribe(({ error }) => {
+      if (!error) {
         this.subject.getAll(this.data.params.zone);
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
       }
     });
   }
@@ -84,9 +87,11 @@ export class ModalComponent implements OnInit {
 
   editSubject() {
     this.subject.edit(this.data.params.subjectId, { title: this.value })
-    .subscribe( result => {
-      if (result) {
+    .subscribe(({ error }) => {
+      if (!error) {
         this.subject.getAll(this.data.params.zone);
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
       }
     });
   }
@@ -101,9 +106,11 @@ export class ModalComponent implements OnInit {
   }
 
   deleteSubject() {
-    this.subject.delete(this.data.params.subjectId).subscribe(result => {
-      if (result) {
+    this.subject.delete(this.data.params.subjectId).subscribe(({ error }) => {
+      if (!error) {
         this.subject.getAll(this.data.params.zone);
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
       }
     });
   }

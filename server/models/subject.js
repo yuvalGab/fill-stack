@@ -1,83 +1,72 @@
-const subjects = [
-  {
-    id: 0,
-    title: 'JavaScript',
-    zone: 'client side',
-    importance: 3,
-    control: 2
-  },
-  {
-    id: 1,
-    title: 'Node.js',
-    zone: 'server side',
-    importance: 3,
-    control: 1
-  },
-  {
-    id: 2,
-    title: 'git',
-    zone: 'both sides',
-    importance: 2,
-    control: 2
-  },
-  {
-    id: 3,
-    title: 'docker',
-    zone: 'both sides',
-    importance: 1,
-    control: 3
-  },
-  {
-    id: 4,
-    title: 'HTML',
-    zone: 'client side',
-    importance: 3,
-    control: 2
-  },
-  {
-    id: 5,
-    title: 'Mongo.DB',
-    zone: 'server side',
-    importance: 2,
-    control: 3
-  },
-  {
-    id: 6,
-    title: 'MySQL',
-    zone: 'server side',
-    importance: 3,
-    control: 2
-  }
-];
+const { User, Subject } = require('./index');
+const { warnings, errors} = require('../utils/messages');
 
 module.exports = {
-  getAll(zone) {
-    return subjects.filter(s => s.zone === zone);
+  async getAll(userId, zone) {
+    let subjects = [];
+    try {
+      const user = await User.findById(userId);
+      subjects = await user.getSubjects({ where: { zone }});
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+
+    return { error: '', data: subjects };
   },
 
-  getTitle(subjectId) {
-    return { title: subjects[+subjectId].title };
+  async getTitle(subjectId) {
+    let subject;
+    try {
+      subject = await Subject.findById(subjectId);
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+
+    return { error: '', title: subject.title };
   },
 
-  getZone(subjectId) {
-    return subjects.find(s => s.id === subjectId).zone;
+  async getZone(subjectId) {
+    let zone = '';
+    try {
+      subject = await Subject.findById(subjectId);
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+
+    return { error: '', zone: subject.zone };
   },
 
-  add(newSubject) {
-    subjects.push({ id: subjects.length, ...newSubject });
-    return true;
+  async add(userId, newSubject) {
+    try {
+      const subject = await Subject.create(newSubject);
+      const user = await User.findById(userId);
+      await user.addSubject(subject);
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+
+    return { error: '' };
   },
 
-  edit({id, subjectDetails}) {
-    const oldSubject = subjects.find(s => s.id === id);
-    this.delete(id);
-    subjects.push({ id, ...oldSubject, ...subjectDetails });
-    return true;
+  async edit({ id, subjectDetails }) {
+    try {
+      const subject = await Subject.findById(id);
+      await subject.update(subjectDetails);
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+  
+    return { error: '' };
   },
 
-  delete(id) {
-    const subject = subjects.find(s => s.id === +id);
-    subjects.splice(subjects.indexOf(subject) , 1);
-    return true;
+  async delete(id) {
+    try {
+      const subject = await Subject.findById(id);
+      await subject.destroy();
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+  
+    return { error: '' };
   }
 };

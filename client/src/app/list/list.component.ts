@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../list/modal/modal.component';
 import { Subject } from 'rxjs/Subject';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list',
@@ -25,7 +26,8 @@ export class ListComponent implements OnInit {
     private router:Router,
     private subject:SubjectService,
     private topic:TopicService,
-    public dialog:MatDialog
+    public dialog:MatDialog,
+    private snackBar:MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -62,15 +64,24 @@ export class ListComponent implements OnInit {
   subjectsListInit(zone:string) {
     this.title = `${zone} subjects list`;
     this.subject.getAll(zone);
-    this.subject.list.subscribe(newList => {
-      this.list = newList;
+    this.subject.list.subscribe(({ error, data }) => {
+      if (!error) {
+        this.list = data;
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
+      }  
     });
   }
 
   topicsListInit(subjectId:string) {
-    this.subject.getTitle(subjectId).subscribe(res => {
-      this.title = `${res.title} topics list`;
+    this.subject.getTitle(subjectId).subscribe(({error, title}) => {
+      if (!error) {
+        this.title = `${title} topics list`;
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
+      }
     });
+
     this.topic.getAll(subjectId);
     this.topic.list.subscribe(list => {
       this.list = list;
@@ -133,11 +144,17 @@ export class ListComponent implements OnInit {
     const newDetails = type === 'importance' ? { importance: value } : { control: value };
     switch (this.type) {
       case 'zone': {
-          this.subject.edit(id, newDetails).subscribe();
+          this.subject.edit(id, newDetails).subscribe(({ error }) => {
+            if (error) {
+              this.snackBar.open(error, '', { duration: 2000 });
+            }
+          });
         }
         break;
       case 'subject': {
-          this.topic.edit(id, newDetails).subscribe();
+          this.topic.edit(id, newDetails).subscribe(({ error }) => {
+            this.snackBar.open(error, '', { duration: 2000 });
+          });
         }
         break;
     }

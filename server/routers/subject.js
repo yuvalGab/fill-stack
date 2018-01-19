@@ -2,27 +2,29 @@ const express = require('express');
 const router = express.Router();
 const Subject = require('../models/subject');
 
-router.get('/getAll/:zone', (req, res) => {
+router.get('/getAll/:zone', async (req, res) => {
+  const { userId } = req.session;
   const { zone } = req.params;
-  res.send(Subject.getAll(zone));
+  res.send(await Subject.getAll(userId, zone));
 });
 
-router.get('/getTitle/:subjectId', (req, res) => {
+router.get('/getTitle/:subjectId', async (req, res) => {
   const { subjectId } = req.params;
-  res.send(Subject.getTitle(subjectId));
+  res.send(await Subject.getTitle(subjectId));
 });
 
-router.post('/add', (req, res) => {
-  res.send(Subject.add(req.body));
+router.post('/add', async (req, res) => {
+  const { userId } = req.session;
+  res.send(await Subject.add(userId, req.body));
 });
 
-router.put('/edit', (req, res) => {
-  res.send(Subject.edit(req.body));
+router.put('/edit', async (req, res) => {
+  res.send(await Subject.edit(req.body));
 });
 
-router.delete('/delete/:subjectId', (req, res) => {
+router.delete('/delete/:subjectId', async (req, res) => {
   const { subjectId } = req.params; 
-  res.send(Subject.delete(subjectId));
+  res.send(await Subject.delete(subjectId));
 });
 
 module.exports = router;
