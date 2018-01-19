@@ -10,6 +10,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpModule } from '@angular/http';
 import { MatDialogModule  } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -63,7 +64,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     AppRoutingModule,
     MatSelectModule,
     HttpModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   entryComponents: [ModalComponent],
   providers: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,16 @@ import { UserService } from '../services/user.service';
 export class HomeComponent implements OnInit {
   fullName:string = '';
 
-  constructor(private user:UserService) { }
+  constructor(private user:UserService, private snackBar:MatSnackBar) { }
 
   ngOnInit() {
-    this.user.getFullName().subscribe(res => {
-      this.fullName = res.fullName;
+    this.user.getFullName().subscribe(({ error, fullName }) => {
+      if (!error) {
+        this.fullName = fullName;
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
+      }
     })
-  }
+  } 
 
 }

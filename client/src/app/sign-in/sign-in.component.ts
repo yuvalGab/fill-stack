@@ -24,15 +24,15 @@ export class SignInComponent implements OnInit {
   onSubmit(data) {
     const { valid, value } = data;
     if (valid) {
-      this.user.login(value).subscribe(isLogin => {
-        if (isLogin) {
+      this.user.login(value).subscribe(({ error }) => {
+        if (!error) {
           this.error = '';
           this.success = 'login successful';
           setTimeout(() => {
             this.router.navigate(['home']);
           }, 1000)
         } else {
-          this.error = 'the username or/and password is incorrect';
+          this.error = error;
         }
       });
      
