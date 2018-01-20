@@ -1,5 +1,6 @@
-const { User } = require('./index');
+const { User, Subject, Topic } = require('./index');
 const { warnings, errors} = require('../utils/messages');
+const initialContent = require('../utils/initialContent');
 
 module.exports = {
   async create(newUser) {
@@ -9,7 +10,18 @@ module.exports = {
         return warnings['user_exist'];
       }
 
-      await User.create(newUser);
+      const user = await User.create(newUser);
+
+      initialContent.forEach(async (c) => {
+        const subject = await Subject.create(c.subject);
+        await user.addSubject(subject);
+
+        c.topics.forEach(async (t) => {
+          const topic = await Topic.create(t);
+          await subject.addTopic(topic);
+        });
+      });
+
     } catch (error) {
       return errors['server_error'];
     }
