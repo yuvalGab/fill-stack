@@ -1,96 +1,62 @@
-const Subject = require('./subject');
-
-const topics = [
-  {
-    id: 0,
-    title: 'loops',
-    zone: 'client side',
-    subject: 1,
-    importance: 3,
-    control: 2,
-    description: 'simple text'
-  },
-  {
-    id: 1,
-    title: 'npm',
-    zone: 'server side',
-    subject: 2,
-    importance: 3,
-    control: 1
-  },
-  {
-    id: 2,
-    title: 'commit',
-    zone: 'both sides',
-    subject: 3,
-    importance: 2,
-    control: 2,
-    description: 'simple text'
-  },
-  {
-    id: 3,
-    title: 'images',
-    zone: 'both sides',
-    subject: 4,
-    importance: 1,
-    control: 3,
-    description: 'simple text'
-  },
-  {
-    id: 4,
-    title: 'tags',
-    zone: 'client side',
-    subject: 5,
-    importance: 3,
-    control: 2,
-    description: 'simple text'
-  },
-  {
-    id: 5,
-    title: 'collections',
-    zone: 'server side',
-    subject: 6,
-    importance: 2,
-    control: 3,
-    description: 'simple text'
-  },
-  {
-    id: 6,
-    title: 'schema',
-    zone: 'server side',
-    subject: 6,
-    importance: 3,
-    control: 2,
-    description: 'simple text'
-  }
-];
+const { Subject, Topic } = require('./index');
+const { warnings, errors } = require('../utils/messages');
 
 module.exports = {
-  getAll(subjectId) {
-    return topics.filter(s => s.subject === +subjectId);
+  async getAll(subjectId) {
+    let topics = [];
+    try {
+      const subject = await Subject.findById(subjectId);
+      topics = await subject.getTopics();
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+
+    return { error: '', data: topics };
   },
 
-  getOne(topicId) {
-    return topics.find(s => s.id === +topicId);
+  async getOne(id) {
+    let topic = {};
+    try {
+      topic = await Topic.findById(id);
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+
+    return { error: '', data: topic };
   },
 
-  add(newTopic) {
-    const { subject:subjectId } = newTopic;
-    const zone = Subject.getZone(subjectId); 
-    topics.push({ id: topics.length, zone, ...newTopic});
-    return true;
+  async add(newTopic) {
+    const { subjectId } = newTopic;
+    try {
+      const topic = await Topic.create(newTopic);
+      const subject = await Subject.findById(subjectId);
+      await subject.addTopic(topic);
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+    
+    return { error: '' };
   },
 
-  edit({id, topicDetails}) {
-    const oldTopic = topics.find(t => t.id === id);
-    this.delete(id);
-    topics.push({ id, ...oldTopic, ...topicDetails });
-    return true;
+  async edit({id, topicDetails}) {
+    try {
+      const topic = await Topic.findById(id);
+      await topic.update(topicDetails);
+    } catch (error) {
+      return { error: errors['server_error'] };
+    }
+
+    return { error: '' };
   },
 
-  delete(id) {
-    const topic = topics.find(t => t.id === +id);
-    topics.splice(topics.indexOf(topic) , 1);
-    return true;
+  async delete(id) {
+   try {
+     const topic = await Topic.findById(id);
+     await topic.destroy();
+   } catch (error) {
+    return { error: errors['server_error'] };
+   }
+
+   return { error: '' };
   }
 };

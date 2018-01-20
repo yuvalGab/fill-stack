@@ -20,15 +20,15 @@ export class SignUpComponent implements OnInit {
     const { valid, value } = data;
     if (valid && value.password === value.retypePassword) {
       delete value['retypePassword'];
-      this.user.create(value).subscribe(isCreated => {
-        if (isCreated) {
+      this.user.create(value).subscribe(({ error }) => {
+        if (!error) {
           this.error = '';
           this.success = 'user created successfully';
           setTimeout(() => {
             this.router.navigate(['sign-in']);
           }, 1000)
         } else {
-          this.error = 'there was a problem with the server request - please try again later';
+          this.error = error;
         }
       });
     } else {
