@@ -1,5 +1,5 @@
 const { User, Subject } = require('./index');
-const { warnings, errors} = require('../utils/messages');
+const { warnings, errors } = require('../utils/messages');
 
 module.exports = {
   async getAll(userId, zone) {
@@ -14,26 +14,15 @@ module.exports = {
     return { error: '', data: subjects };
   },
 
-  async getTitle(subjectId) {
+  async getTitle(id) {
     let subject;
     try {
-      subject = await Subject.findById(subjectId);
+      subject = await Subject.findById(id);
     } catch (error) {
       return { error: errors['server_error'] };
     }
 
     return { error: '', title: subject.title };
-  },
-
-  async getZone(subjectId) {
-    let zone = '';
-    try {
-      subject = await Subject.findById(subjectId);
-    } catch (error) {
-      return { error: errors['server_error'] };
-    }
-
-    return { error: '', zone: subject.zone };
   },
 
   async add(userId, newSubject) {

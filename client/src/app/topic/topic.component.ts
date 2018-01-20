@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TopicService } from '../services/topic.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-topic',
@@ -16,16 +17,21 @@ export class TopicComponent implements OnInit {
   constructor(
     private route:ActivatedRoute, 
     private router:Router, 
-    private topic:TopicService
+    private topic:TopicService,
+    private snackBar:MatSnackBar
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const { id } = params;
-      this.topic.getOne(id).subscribe(result => {
-        this.data = result;
-        this.description = this.data.description;
-        this.isLoaded = true;
+      this.topic.getOne(id).subscribe(({ error, data }) => {
+        if (!error) {
+          this.data = data;
+          this.description = this.data.description;
+          this.isLoaded = true;
+        } else {
+          this.snackBar.open(error, '', { duration: 2000 });
+        }      
       });
     });
   }
@@ -43,10 +49,12 @@ export class TopicComponent implements OnInit {
 
   onSaveDesc() {
     this.topic.edit(this.data.id, { description: this.description })
-    .subscribe(result => {
-      if (result) {
+    .subscribe(({ error }) => {
+      if (!error) {
         this.data.description = this.description;
         this.isDescDirty = false;
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
       }
     });
   }

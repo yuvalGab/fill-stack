@@ -43,7 +43,7 @@ export class ListComponent implements OnInit {
               } else {
                 this.router.navigate(['404']);
               }
-            })
+            });
           }
           break;
       
@@ -52,13 +52,11 @@ export class ListComponent implements OnInit {
               const subjectId = params.id;
               this.subjectId = +subjectId;
               this.topicsListInit(subjectId);
-            })
+            });
           }
           break;
       }
-    })
-
-
+    });
   }
 
   subjectsListInit(zone:string) {
@@ -83,8 +81,12 @@ export class ListComponent implements OnInit {
     });
 
     this.topic.getAll(subjectId);
-    this.topic.list.subscribe(list => {
-      this.list = list;
+    this.topic.list.subscribe(({ error, data }) => {
+      if (!error) {
+        this.list = data;
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
+      }
     });
   }
 
@@ -153,7 +155,9 @@ export class ListComponent implements OnInit {
         break;
       case 'subject': {
           this.topic.edit(id, newDetails).subscribe(({ error }) => {
-            this.snackBar.open(error, '', { duration: 2000 });
+            if (error) {
+              this.snackBar.open(error, '', { duration: 2000 });
+            }
           });
         }
         break;

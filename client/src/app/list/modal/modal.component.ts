@@ -73,14 +73,16 @@ export class ModalComponent implements OnInit {
     this.topic.add(
       {
         title: this.value,
-        subject: this.data.params.subjectId,
+        subjectId: +this.data.params.subjectId,
         importance: 1,
         control: 1,
         description: ''
       }
-    ).subscribe(result => {
-      if (result) {
+    ).subscribe(({ error }) => {
+      if (!error) {
         this.topic.getAll(this.data.params.subjectId);
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
       }
     });
   }
@@ -98,9 +100,11 @@ export class ModalComponent implements OnInit {
 
   editTopic() {
     this.topic.edit(this.data.params.topicId, { title: this.value })
-    .subscribe( result => {
-      if (result) {
+    .subscribe(({ error }) => {
+      if (!error) {
         this.topic.getAll(this.data.params.subjectId);
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
       }
     });
   }
@@ -116,9 +120,11 @@ export class ModalComponent implements OnInit {
   }
 
   deleteTopic() {
-    this.topic.delete(this.data.params.topicId).subscribe(result => {
-      if (result) {
+    this.topic.delete(this.data.params.topicId).subscribe(({ error }) => {
+      if (!error) {
         this.topic.getAll(this.data.params.subjectId);
+      } else {
+        this.snackBar.open(error, '', { duration: 2000 });
       }
     });
   }
