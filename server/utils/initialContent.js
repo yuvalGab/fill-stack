@@ -14,7 +14,7 @@ const client = [
   },
   {
     subject: 'Chrome DevTools',
-    topcis: []
+    topics: []
   },
   {
     subject: 'jQuery',

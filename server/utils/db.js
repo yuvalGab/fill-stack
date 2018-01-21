@@ -1,6 +1,10 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('fill_stack', 'root', '', {
+const DATABASE = 'fill_stack';
+const USERNAME = 'root';
+const PASSWORD = '';
+
+const sequelize = new Sequelize(DATABASE, USERNAME, PASSWORD, {
   host: 'localhost',
   dialect: 'mysql',
 });
