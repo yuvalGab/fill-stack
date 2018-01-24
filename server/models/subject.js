@@ -5,8 +5,7 @@ module.exports = {
   async getAll(userId, zone) {
     let subjects = [];
     try {
-      const user = await User.findById(userId);
-      subjects = await user.getSubjects({ where: { zone }});
+      subjects = await Subject.findAll({ where: { userId, zone }});
     } catch (error) {
       return { error: errors['server_error'] };
     }

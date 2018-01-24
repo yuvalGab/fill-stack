@@ -25,17 +25,15 @@ const Topic = db.define('topics', {
 });
 
 User.hasMany(Subject, { as: 'Subjects' });
-Subject.belongsTo(User);
 
 Subject.hasMany(Topic, { as: 'Topics' });
-Topic.belongsTo(Subject);
 
 User.sync();
 Subject.sync();
 Topic.sync();
 
 module.exports = {
-  User,
+    User,
   Subject,
   Topic
 }

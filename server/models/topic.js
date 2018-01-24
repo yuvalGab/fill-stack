@@ -5,8 +5,7 @@ module.exports = {
   async getAll(subjectId) {
     let topics = [];
     try {
-      const subject = await Subject.findById(subjectId);
-      topics = await subject.getTopics();
+      topics = await Topic.findAll({ where: { subjectId }});
     } catch (error) {
       return { error: errors['server_error'] };
     }
