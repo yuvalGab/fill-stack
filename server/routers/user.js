@@ -8,7 +8,7 @@ router.post('/create', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  const { error, userId }= await User.login(req.body);
+  const { error, userId } = await User.login(req.body);
   if (!error) {
     req.session.authenticated = true;
     req.session.userId = userId;

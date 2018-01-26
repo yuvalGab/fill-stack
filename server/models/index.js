@@ -33,7 +33,7 @@ Subject.sync();
 Topic.sync();
 
 module.exports = {
-    User,
+  User,
   Subject,
   Topic
 }
