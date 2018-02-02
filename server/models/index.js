@@ -24,16 +24,27 @@ const Topic = db.define('topics', {
   subjectId: Sequelize.INTEGER                   
 });
 
+const Resource = db.define('resources', {
+  title: Sequelize.STRING,
+  link: Sequelize.TEXT,
+  type: Sequelize.STRING,
+  topicId: Sequelize.INTEGER                
+});
+
 User.hasMany(Subject, { as: 'Subjects' });
 
 Subject.hasMany(Topic, { as: 'Topics' });
 
+Topic.hasMany(Resource, { as: 'Resources'});
+
 User.sync();
 Subject.sync();
 Topic.sync();
+Resource.sync();
 
 module.exports = {
   User,
   Subject,
-  Topic
+  Topic,
+  Resource
 }
