@@ -7,6 +7,10 @@ export class ResourceService {
 
   constructor(private http:Http) { }
 
+  getAll(topicId:number) {
+    return this.http.get(`/api/resource/getAll/${topicId}`).map(res => res.json());
+  }
+
   add(newResource:object) {
     return this.http.post('/api/resource/add', newResource).map(res => res.json());
   }

@@ -18,7 +18,7 @@ module.exports = {
     try {
       const resource = await Resource.create(newResource);
       const topic = await Topic.findById(topicId);
-      await topic.addTopic(resource);
+      await topic.addResource(resource);
     } catch (error) {
       return { error: errors['server_error'] };
     }
