@@ -13,7 +13,7 @@ router.post('/add', async (req, res) => {
 
 router.delete('/delete/:resourceId', async (req, res) => {
   const { resourceId } = req.params; 
-  res.send(await Subject.delete(resourceId));
+  res.send(await Resource.delete(resourceId));
 });
 
 module.exports = router;

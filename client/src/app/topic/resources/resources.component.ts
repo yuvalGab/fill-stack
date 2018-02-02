@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ResourceService } from '../../services/resource.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgSwitch } from '@angular/common';
 
 @Component({
   selector: 'app-resources',
@@ -27,7 +28,7 @@ export class ResourcesComponent implements OnInit {
     });
   }
 
-  onCreate(data) {
+  createItem(data) {
     const { valid, value } = data;
     if (valid) {
       this.resource.add({ ...value, topicId: this.topicId }).subscribe(({ error }) => {
@@ -40,4 +41,13 @@ export class ResourcesComponent implements OnInit {
     }
   }
 
+  deleteItem(resourceId:number) {
+    this.resource.delete(resourceId).subscribe(({ error }) => {
+      if (error) {
+        return this.snackBar.open(error, '', { duration: 2000 });
+      }
+
+      this.getAllResources();
+    });
+  }
 }

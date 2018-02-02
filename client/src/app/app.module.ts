@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpModule } from '@angular/http';
 import { MatDialogModule  } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -68,7 +69,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     MatSelectModule,
     HttpModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CommonModule
   ],
   entryComponents: [ModalComponent],
   providers: [

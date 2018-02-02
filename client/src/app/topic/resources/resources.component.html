@@ -1,5 +1,5 @@
 <div class="create">
-  <form class="create-form" #createForm="ngForm" (ngSubmit)="onCreate(createForm)">  
+  <form class="create-form" #createForm="ngForm" (ngSubmit)="createItem(createForm)">  
     <mat-form-field class="title">
       <input matInput ngModel name="title" placeholder="title" minlength="1" maxlength="20" required>
     </mat-form-field>
@@ -21,5 +21,13 @@
   </form>
 </div>
 <div class="list">
-  {{list | json}}
+  <div class="item" *ngFor="let item of list" [ngSwitch]="item.type">
+    <mat-icon class="delete" (click)="deleteItem(item.id)">close</mat-icon>
+    <a href="{{item.link}}" target="_blank">{{item.title}}</a>
+    <mat-icon *ngSwitchCase="'text'">text_format</mat-icon>
+    <mat-icon *ngSwitchCase="'video'">video_library</mat-icon>
+    <mat-icon *ngSwitchCase="'image'">image</mat-icon>
+    <mat-icon *ngSwitchCase="'code'">code</mat-icon>
+    <mat-icon *ngSwitchCase="'other'">tab</mat-icon>
+  </div>
 </div>

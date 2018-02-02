@@ -29,6 +29,30 @@
   flex: 1;
 }
 
+.list {
+  margin-top: 40px;
+}
+
+.item {
+  padding: 8px;
+  border: 1px solid rgb(184, 186, 221);
+  border-radius: 5px;
+  margin: 8px 0px;
+}
+
+.item a {
+  text-decoration: unset;
+  color: rgb(21, 21, 179);
+  font-size: 18px;
+}
+
+.delete {
+  margin-right: 16px;
+  color: red;
+  cursor: pointer;
+  font-size: 14px;
+}
+
 @media screen and (max-width: 800px) {
   .create {
     padding: 20px 12px;
@@ -39,7 +63,7 @@
   }
 
   .mat-input-container {
-    margin:  0px;
+    margin: 0px;
     width: 90%;
   }
 

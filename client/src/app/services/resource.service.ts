@@ -15,4 +15,7 @@ export class ResourceService {
     return this.http.post('/api/resource/add', newResource).map(res => res.json());
   }
 
+  delete(resourceId:number) {
+    return this.http.delete(`/api/resource/delete/${resourceId}`).map(res => res.json());
+  }
 }
