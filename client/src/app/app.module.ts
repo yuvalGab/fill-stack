@@ -28,9 +28,10 @@ import { ModalComponent } from './list/modal/modal.component';
 import { FilterComponent } from './list/filter/filter.component';
 import { ResourcesComponent } from './topic/resources/resources.component';
 
+import { UserService } from './services/user.service';
 import { SubjectService } from './services/subject.service';
 import { TopicService } from './services/topic.service';
-import { UserService } from './services/user.service';
+import { ResourceService } from './services/resource.service';
 import { UserGuard } from './user.guard';
 import { FilterPipe } from './pipes/filter.pipe';
 
@@ -71,9 +72,10 @@ import { FilterPipe } from './pipes/filter.pipe';
   ],
   entryComponents: [ModalComponent],
   providers: [
+    UserService,
     SubjectService, 
     TopicService, 
-    UserService,
+    ResourceService,
     UserGuard
   ],
   bootstrap: [AppComponent]

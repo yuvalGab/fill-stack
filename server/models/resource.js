@@ -14,7 +14,7 @@ module.exports = {
   },
 
   async add(newResource) {
-    const { topicId } = newTopic;
+    const { topicId } = newResource;
     try {
       const resource = await Resource.create(newResource);
       const topic = await Topic.findById(topicId);
