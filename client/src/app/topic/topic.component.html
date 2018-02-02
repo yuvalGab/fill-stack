@@ -15,7 +15,11 @@
             <button [disabled]="!isDescDirty" (click)="onSaveDesc()">
                 <mat-icon>save</mat-icon>
             </button>           
-            <textarea (input)="onDescriptionChange($event)" [value]="description"></textarea>
+            <textarea 
+                (input)="onDescriptionChange($event)" 
+                [value]="description"
+                placeholder="here you can add any relevant information to this topic..."
+            ></textarea>
         </div>
     </div>    
 </section>
