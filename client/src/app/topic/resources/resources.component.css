@@ -1,0 +1,46 @@
+.create {
+  padding: 6px 12px;
+  border: 1px solid rgb(135, 175, 216);
+  border-radius: 5px;
+}
+
+.create-form {
+  display: flex;
+  align-items: center;
+}
+
+.mat-input-container {
+  margin:  0px 12px;
+}
+
+.title {
+  flex: 5;
+}
+
+.link {
+  flex: 8;
+}
+
+.type {
+  flex: 1;
+}
+
+.add-button {
+  flex: 1;
+}
+
+@media screen and (max-width: 800px) {
+  .create {
+    padding: 20px 12px;
+  }
+  
+  .create-form {
+    flex-direction: column;
+  }
+
+  .mat-input-container {
+    margin:  0px;
+    width: 90%;
+  }
+
+}

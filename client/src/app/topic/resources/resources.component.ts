@@ -13,4 +13,11 @@ export class ResourcesComponent implements OnInit {
   ngOnInit() {
   }
 
+  onCreate(data) {
+    const { valid, value } = data;
+    if (valid) {
+      console.log(value);
+    }
+  }
+
 }

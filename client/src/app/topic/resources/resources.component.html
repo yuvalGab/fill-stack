@@ -1,3 +1,25 @@
-<p>
-  resources works!
-</p>
+<div class="create">
+  <form class="create-form" #createForm="ngForm" (ngSubmit)="onCreate(createForm)">  
+    <mat-form-field class="title">
+      <input matInput ngModel name="title" placeholder="title" minlength="1" maxlength="20" required>
+    </mat-form-field>
+    <mat-form-field class="link">
+      <input matInput ngModel name="link" placeholder="link" minlength="1" maxlength="200" required>
+    </mat-form-field>
+    <mat-form-field class="type">
+      <mat-select ngModel name="type" placeholder="type" required>
+        <mat-option>text</mat-option>
+        <mat-option>video</mat-option>
+        <mat-option>image</mat-option>
+        <mat-option>code</mat-option>
+        <mat-option>other</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button class="add-btn" mat-mini-fab color="primary">
+      <mat-icon>note_add</mat-icon>
+    </button>
+  </form>
+</div>
+<div class="list">
+
+</div>
