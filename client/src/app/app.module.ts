@@ -26,6 +26,7 @@ import { ItemComponent } from './list/item/item.component';
 import { SelectLevelComponent } from './common/select-level/select-level.component';
 import { ModalComponent } from './list/modal/modal.component';
 import { FilterComponent } from './list/filter/filter.component';
+import { ResourcesComponent } from './topic/resources/resources.component';
 
 import { SubjectService } from './services/subject.service';
 import { TopicService } from './services/topic.service';
@@ -51,7 +52,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     SelectLevelComponent,
     ModalComponent,
     FilterPipe,
-    FilterComponent
+    FilterComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,
