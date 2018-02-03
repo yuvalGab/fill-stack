@@ -10,7 +10,7 @@ import { UserService } from '../../services/user.service';
 export class HeaderComponent implements OnInit {
   showLogout:boolean = false;
 
-  constructor(private router: Router, private user:UserService) { }
+  constructor(private router:Router, private user:UserService) { }
 
   ngOnInit() {
     this.user.isLogin.subscribe(result => {

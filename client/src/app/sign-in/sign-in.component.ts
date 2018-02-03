@@ -11,7 +11,7 @@ export class SignInComponent implements OnInit {
   error:string = '';
   success:string = '';
   
-  constructor(private router: Router, private user:UserService) { }
+  constructor(private router:Router, private user:UserService) { }
 
   ngOnInit() {
     this.user.isLogedIn().subscribe(isLogedIn => {
