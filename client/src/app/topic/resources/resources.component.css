@@ -40,17 +40,52 @@
   margin: 8px 0px;
 }
 
-.item a {
-  text-decoration: unset;
-  color: rgb(21, 21, 179);
-  font-size: 18px;
+.msg {
+  text-align: center;
+  margin-top: 36px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin: 4px;  
 }
 
 .delete {
-  margin-right: 16px;
+  flex: 1;
+  margin-right: 20px;
   color: red;
   cursor: pointer;
   font-size: 14px;
+  opacity: 0.7;
+  transition: 700ms all;
+}
+
+.delete:hover {
+  opacity: 1;
+}
+
+.item > a {
+  flex: 10;
+  text-decoration: unset;
+  color: rgb(21, 21, 179);
+  font-size: 18px;
+  transition: 700ms all;
+}
+
+flex > a:hover {
+  color: blue;
+}
+
+.icon {
+  flex: 1;
+  margin-left: 20px;
+  color: rgb(0, 0, 115);
 }
 
 @media screen and (max-width: 800px) {

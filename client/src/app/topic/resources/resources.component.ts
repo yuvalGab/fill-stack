@@ -35,7 +35,8 @@ export class ResourcesComponent implements OnInit {
         if (error) {
           return this.snackBar.open(error, '', { duration: 2000 });
         }
-
+        
+        data.reset();
         this.getAllResources();
       });
     }
