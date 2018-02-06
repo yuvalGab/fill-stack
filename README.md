@@ -2,6 +2,8 @@
 ## control your progress
 a learning management system for web developers
 
+node version: 8.9.1
+
 ### instructions:
 1. clone/download the project
 2. make sure mysql is installed and running
