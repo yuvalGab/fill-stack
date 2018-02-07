@@ -3,17 +3,20 @@ const router = express.Router();
 const Topic = require('../models/topic');
 
 router.get('/getAll/:subjectId', async (req, res) => {
+  const { userId } = req.session;
   const { subjectId } = req.params;
-  res.send(await Topic.getAll(subjectId));
+  res.send(await Topic.getAll(userId, subjectId));
 });
 
 router.get('/getOne/:topicId', async (req, res) => {
+  const { userId } = req.session;
   const { topicId } = req.params;
-  res.send(await Topic.getOne(topicId));
+  res.send(await Topic.getOne(userId, topicId));
 });
 
 router.post('/add', async (req, res) => {
-  res.send(await Topic.add(req.body));
+  const { userId } = req.session;
+  res.send(await Topic.add(userId, req.body));
 });
 
 router.put('/edit', async (req, res) => {
