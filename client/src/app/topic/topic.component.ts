@@ -26,6 +26,10 @@ export class TopicComponent implements OnInit {
       const { id } = params;
       this.topic.getOne(id).subscribe(({ error, data }) => {
         if (!error) {
+          if (data === null) {
+            return this.snackBar.open('topic does not exist', '', { duration: 2000 });
+          }
+
           this.data = data;
           this.description = this.data.description;
           this.isLoaded = true;
