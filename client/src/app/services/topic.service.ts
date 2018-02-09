@@ -1,17 +1,18 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TopicService {
-  list = new EventEmitter();
+  public list:Subject<any> = new Subject();
 
   constructor(private http:Http) { }
 
   getAll(subjectId:string) {
     return this.http.get(`/api/topic/getAll/${subjectId}`).map(res => res.json())
     .subscribe(results => {
-      this.list.emit(results);
+      this.list.next(results);
     });
   }
 

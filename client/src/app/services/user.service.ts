@@ -1,10 +1,11 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
-  public isLogin = new EventEmitter();
+  public isLogin:Subject<any> = new Subject();
 
   constructor(private http:Http) { }
 
@@ -15,7 +16,7 @@ export class UserService {
   login(user) {
     return this.http.post('/api/user/login', user).map(res => {
       const isLogin = res.json();
-      this.isLogin.emit(isLogin);
+      this.isLogin.next(isLogin);
       return isLogin;
     });
   }
@@ -23,7 +24,7 @@ export class UserService {
   logout() {
     return this.http.get('/api/user/logout').map(res => { 
       const isLogout = res.json();
-      this.isLogin.emit(!isLogout);
+      this.isLogin.next(!isLogout);
       return isLogout;
     });
   }
@@ -31,7 +32,7 @@ export class UserService {
   isLogedIn() {
     return this.http.get('/api/user/isLogedIn').map(res => {
       const isLogin = res.json();
-      this.isLogin.emit(isLogin);
+      this.isLogin.next(isLogin);
       return isLogin;
     });
   }
