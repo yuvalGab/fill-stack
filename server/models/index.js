@@ -2,30 +2,80 @@ const db = require('../utils/db');
 const Sequelize = require('sequelize');
 
 const User = db.define('users', {
-  username: Sequelize.STRING,
-  password: Sequelize.TEXT,
-  email: Sequelize.STRING,
-  fullName: Sequelize.STRING
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  password: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  fullName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
 });
 
 const Subject = db.define('subjects', {
-  title: Sequelize.STRING,
-  zone: Sequelize.STRING,
-  importance: Sequelize.INTEGER,
-  control: Sequelize.INTEGER                 
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  zone: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  importance: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 1
+  },
+  control: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 1   
+  }               
 });
 
 const Topic = db.define('topics', {
-  title: Sequelize.STRING,
-  importance: Sequelize.INTEGER,
-  control: Sequelize.INTEGER,
-  description: Sequelize.TEXT                 
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  importance: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 1
+  },
+  control: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 1   
+  },  
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+    defaultValue: ''
+  }                 
 });
 
 const Resource = db.define('resources', {
-  title: Sequelize.STRING,
-  link: Sequelize.TEXT,
-  type: Sequelize.STRING     
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  link: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
+  type: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }     
 });
 
 User.hasMany(Subject, { as: 'Subjects' });

@@ -1,4 +1,4 @@
-const { User, Subject } = require('./index');
+const { User, Subject, Topic } = require('./index');
 const { warnings, errors } = require('../utils/messages');
 
 module.exports = {
@@ -27,6 +27,8 @@ module.exports = {
   async add(userId, newSubject) {
     try {
       const subject = await Subject.create(newSubject);
+      const topic = await Topic.create({ title: 'general' });
+      await subject.addTopic(topic);
       const user = await User.findById(userId);
       await user.addSubject(subject);
     } catch (error) {

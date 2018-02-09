@@ -56,9 +56,7 @@ export class ModalComponent implements OnInit {
     this.subject.add(
       {
         title: this.value,
-        zone: this.data.params.zone,
-        importance: 1,
-        control: 1
+        zone: this.data.params.zone
       }
     ).subscribe(({ error }) => {
       if (!error) {
@@ -73,10 +71,7 @@ export class ModalComponent implements OnInit {
     this.topic.add(
       {
         title: this.value,
-        subjectId: +this.data.params.subjectId,
-        importance: 1,
-        control: 1,
-        description: ''
+        subjectId: +this.data.params.subjectId
       }
     ).subscribe(({ error }) => {
       if (!error) {
