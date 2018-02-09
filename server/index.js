@@ -20,7 +20,7 @@ app.use(checkAuth);
 app.use('/api/user', userRouter);
 app.use('/api/subject', subjectRouter);
 app.use('/api/topic', topicRouter);
-app.use('/api/resource', resourceRouter)
+app.use('/api/resource', resourceRouter);
 
 app.listen(3000, () => {
   console.log('fill stack server runing in port 3000');

@@ -1,15 +1,18 @@
 const path = require('path');
 
 const checkAuth = (req, res, next) => {
-  if (req.url.split('/')[1] !== 'api') {
-    return res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+  const { url, session: { authenticated }} = req;
+  const isApiReq = url.split('/')[1] === 'api';
+  if (!isApiReq) {
+    const clientHtml = path.resolve('../client/dist/index.html');
+    return res.sendFile(clientHtml);
   }
 
   if (
-    req.url !== '/api/user/create' &&
-    req.url !== '/api/user/login' &&
-    req.url !== '/api/user/isLogedIn' &&
-    !req.session.authenticated
+    url !== '/api/user/create' &&
+    url !== '/api/user/login' &&
+    url !== '/api/user/isLogedIn' &&
+    !authenticated
   ) {
     return res.sendStatus(403);
   }
