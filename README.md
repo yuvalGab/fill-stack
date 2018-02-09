@@ -1,10 +1,17 @@
-# Fill Stack
-## control your progress
-a learning management system for web developers
+# *Fill Stack*
+## *control your progress*
+
+*a learning management system for web developers*
 
 node version: 8.9.1
 
-### instructions:
+---
+
+### [CLICK HERE FOR A LIVE APP HOST SERVER](http://165.227.148.84:3000)
+
+---
+
+### local setup instructions:
 1. clone/download the project
 2. make sure mysql is installed and running
 3. create a new database for the app
