@@ -12,6 +12,7 @@ import { HttpModule } from '@angular/http';
 import { MatDialogModule  } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -28,14 +29,15 @@ import { SelectLevelComponent } from './common/select-level/select-level.compone
 import { ModalComponent } from './list/modal/modal.component';
 import { FilterComponent } from './list/filter/filter.component';
 import { ResourcesComponent } from './topic/resources/resources.component';
+import { LoaderComponent } from './common/loader/loader.component';
 
 import { UserService } from './services/user.service';
 import { SubjectService } from './services/subject.service';
 import { TopicService } from './services/topic.service';
 import { ResourceService } from './services/resource.service';
+import { LoaderService } from './services/loader.service';
 import { UserGuard } from './user.guard';
 import { FilterPipe } from './pipes/filter.pipe';
-
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     ModalComponent,
     FilterPipe,
     FilterComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     HttpModule,
     MatDialogModule,
     MatSnackBarModule,
-    CommonModule
+    CommonModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [ModalComponent],
   providers: [
@@ -78,6 +82,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     SubjectService, 
     TopicService, 
     ResourceService,
+    LoaderService,
     UserGuard
   ],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { ModalComponent } from '../list/modal/modal.component';
 import { Subject } from 'rxjs/Subject';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-list',
@@ -27,7 +28,8 @@ export class ListComponent implements OnInit {
     private subject:SubjectService,
     private topic:TopicService,
     public dialog:MatDialog,
-    private snackBar:MatSnackBar
+    private snackBar:MatSnackBar,
+    private loader:LoaderService
   ) { }
 
   ngOnInit() {
@@ -62,7 +64,9 @@ export class ListComponent implements OnInit {
   subjectsListInit(zone:string) {
     this.title = `${zone} subjects list`;
     this.subject.getAll(zone);
+    this.loader.show();
     this.subject.list.subscribe(({ error, data }) => {
+      this.loader.hide();
       if (!error) {
         this.list = data;
       } else {
@@ -81,7 +85,9 @@ export class ListComponent implements OnInit {
     });
 
     this.topic.getAll(subjectId);
+    this.loader.show();
     this.topic.list.subscribe(({ error, data }) => {
+      this.loader.hide();
       if (!error) {
         this.list = data;
       } else {

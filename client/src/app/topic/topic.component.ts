@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TopicService } from '../services/topic.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-topic',
@@ -18,13 +19,16 @@ export class TopicComponent implements OnInit {
     private route:ActivatedRoute, 
     private router:Router, 
     private topic:TopicService,
-    private snackBar:MatSnackBar
+    private snackBar:MatSnackBar,
+    private loader:LoaderService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const { id } = params;
+      this.loader.show();
       this.topic.getOne(id).subscribe(({ error, data }) => {
+        this.loader.hide();
         if (!error) {
           if (data === null) {
             return this.snackBar.open('topic does not exist', '', { duration: 2000 });

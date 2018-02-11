@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,11 @@ import { UserService } from '../../services/user.service';
 export class HeaderComponent implements OnInit {
   showLogout:boolean = false;
 
-  constructor(private router:Router, private user:UserService) { }
+  constructor(
+    private router:Router, 
+    private user:UserService, 
+    private loader:LoaderService
+  ) { }
 
   ngOnInit() {
     this.user.isLogin.subscribe(result => {
@@ -19,7 +24,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogOut() {
+    this.loader.show();
     this.user.logout().subscribe(result => {
+      this.loader.hide();
       if (result) {
         this.router.navigate(['sign-in']);
       }

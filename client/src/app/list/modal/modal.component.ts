@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { SubjectService } from '../../services/subject.service';
 import { TopicService } from '../../services/topic.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-modal',
@@ -17,7 +18,8 @@ export class ModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:any,
     private subject:SubjectService,
     private topic:TopicService,
-    private snackBar:MatSnackBar
+    private snackBar:MatSnackBar,
+    private loader:LoaderService
   ) { }
 
   ngOnInit() {
@@ -53,12 +55,14 @@ export class ModalComponent implements OnInit {
   }
 
   addSubject() {
+    this.loader.show();
     this.subject.add(
       {
         title: this.value,
         zone: this.data.params.zone
       }
     ).subscribe(({ error }) => {
+      this.loader.hide();
       if (!error) {
         this.subject.getAll(this.data.params.zone);
       } else {
@@ -68,12 +72,14 @@ export class ModalComponent implements OnInit {
   }
 
   addTopic() {
+    this.loader.show();
     this.topic.add(
       {
         title: this.value,
         subjectId: +this.data.params.subjectId
       }
     ).subscribe(({ error }) => {
+      this.loader.hide();
       if (!error) {
         this.topic.getAll(this.data.params.subjectId);
       } else {
@@ -83,8 +89,10 @@ export class ModalComponent implements OnInit {
   }
 
   editSubject() {
+    this.loader.show();
     this.subject.edit(this.data.params.subjectId, { title: this.value })
     .subscribe(({ error }) => {
+      this.loader.hide();
       if (!error) {
         this.subject.getAll(this.data.params.zone);
       } else {
@@ -94,8 +102,10 @@ export class ModalComponent implements OnInit {
   }
 
   editTopic() {
+    this.loader.show();
     this.topic.edit(this.data.params.topicId, { title: this.value })
     .subscribe(({ error }) => {
+      this.loader.hide();
       if (!error) {
         this.topic.getAll(this.data.params.subjectId);
       } else {
@@ -105,7 +115,9 @@ export class ModalComponent implements OnInit {
   }
 
   deleteSubject() {
+    this.loader.show();
     this.subject.delete(this.data.params.subjectId).subscribe(({ error }) => {
+      this.loader.hide();
       if (!error) {
         this.subject.getAll(this.data.params.zone);
       } else {
@@ -115,7 +127,9 @@ export class ModalComponent implements OnInit {
   }
 
   deleteTopic() {
+    this.loader.show();
     this.topic.delete(this.data.params.topicId).subscribe(({ error }) => {
+      this.loader.hide();
       if (!error) {
         this.topic.getAll(this.data.params.subjectId);
       } else {
