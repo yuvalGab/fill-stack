@@ -7,10 +7,6 @@ node version: 8.9.1
 
 ---
 
-### [CLICK HERE FOR A LIVE APP HOST SERVER](http://165.227.148.84:3000)
-
----
-
 ### local setup instructions:
 1. clone/download the project
 2. make sure mysql is installed and running
